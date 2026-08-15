@@ -36,22 +36,14 @@ import { site } from '../data/site';
       </div>
 
       <!--
-        Delivered to site.formEmail via FormSubmit (no account needed).
-        The FIRST submission triggers a one-time confirmation email — click the link
-        in it once and the form is live for good.
-        See README for swapping to FormSubmit's hashed endpoint so the address
-        is not exposed in the page source.
+        Delivered via Resend API endpoint (/api/contact).
       -->
       <form
+        id="booking-form"
         class="form-grid reveal"
         method="POST"
-        action={`https://formsubmit.co/${site.formEmail}`}
+        action="/api/contact"
       >
-        <!-- FormSubmit configuration -->
-        <input type="hidden" name="_subject" value="New consult request — www.stevemartinseo.com" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="true" />
-        <input type="hidden" name="_next" value="https://www.stevemartinseo.com/thanks/" />
         <!-- Honeypot: bots fill this, humans never see it. -->
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honeypot" />
         <div class="field">
@@ -100,13 +92,62 @@ import { site } from '../data/site';
         </div>
 
         <div class="field full">
-          <button type="submit" class="ticket-btn">Send It →</button>
+          <div id="form-error" class="form-error" role="alert" style="display: none; margin-bottom: 1rem; padding: 0.75rem 1rem; background: #fff1f0; border: 2px solid #c9382b; color: #a82216; font-size: 0.9rem;"></div>
+          <button type="submit" id="submit-btn" class="ticket-btn">Send It →</button>
           <p class="hint" style="margin-top:14px;">
             I answer everything within one business day. If I'm full, I'll tell you that instead
             of stringing you along for three weeks.
           </p>
         </div>
       </form>
+
+      <script>
+        const form = document.getElementById('booking-form') as HTMLFormElement | null;
+        const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+        const errorBox = document.getElementById('form-error') as HTMLDivElement | null;
+
+        if (form && submitBtn && errorBox) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorBox.style.display = 'none';
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending…';
+            submitBtn.disabled = true;
+
+            try {
+              const formData = new FormData(form);
+              const data: Record<string, string> = {};
+              formData.forEach((value, key) => {
+                data[key] = value.toString();
+              });
+
+              const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              });
+
+              if (response.ok) {
+                window.location.href = '/thanks/';
+              } else {
+                const resJson = await response.json().catch(() => ({}));
+                errorBox.textContent = resJson.error || 'Something went wrong sending your message. Please try again or email directly.';
+                errorBox.style.display = 'block';
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+              }
+            } catch (err) {
+              console.error(err);
+              errorBox.textContent = 'Network error. Please check your connection or email directly.';
+              errorBox.style.display = 'block';
+              submitBtn.innerText = originalBtnText;
+              submitBtn.disabled = false;
+            }
+          });
+        }
+      </script>
 
       <style>
         .honeypot {

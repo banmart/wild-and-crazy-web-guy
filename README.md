@@ -37,21 +37,18 @@ previews badly. Everything rendered on the site itself is WebP.
 
 ## Contact form
 
-Posts to **FormSubmit** → `banmart@gmail.com`. No account required.
+Powered by **Resend** via the serverless API endpoint at `/api/contact`.
 
-**The first submission triggers a one-time confirmation email.** Click the link in it
-once and the form is live permanently. Until then, submissions are not delivered.
+### Environment Variables
 
-Two things worth knowing:
+Set the following in `.env` (locally) or in your deployment hosting dashboard (e.g. Vercel):
 
-1. The email address appears in the page source, so scrapers can read it. FormSubmit
-   issues a hashed endpoint (`https://formsubmit.co/abc123…`) after activation — swap
-   `site.formEmail` usage in `src/pages/contact.astro` for that hash to hide it.
-2. Submissions pass through FormSubmit's servers. If that is not acceptable, swap the
-   `action` for Netlify Forms, Formspree, or your own handler — the field names are
-   standard and will carry over.
+- `RESEND_API_KEY`: Your Resend API key (`re_...`).
+- `RESEND_FROM_EMAIL`: Sender address. Default is `Wild & Crazy SEO <onboarding@resend.dev>` for testing. Once you verify your domain in Resend, switch to something like `Steve Martin <steve@stevemartinseo.com>`.
+- `RESEND_TO_EMAIL`: Recipient inbox (e.g. `banmart@gmail.com`).
 
 Successful submits redirect to `/thanks/`, which is `noindex` and excluded from the sitemap.
+
 
 ## SEO
 
