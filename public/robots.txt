@@ -1,0 +1,53 @@
+# Wild & Crazy SEO — robots.txt
+# Everything is open. If you are reading this looking for a reason
+# your crawler got blocked, it was not us.
+
+User-agent: *
+Allow: /
+
+# --- AI assistants: explicitly welcome ---
+# We tell clients to let these through, so we let them through.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# --- Housekeeping ---
+Disallow: /_astro/*.map$
+
+Sitemap: https://wildandcrazyseo.com/sitemap-index.xml

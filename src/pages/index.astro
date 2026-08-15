@@ -1,17 +1,239 @@
 ---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TicketCard from '../components/TicketCard.astro';
+import Marquee from '../components/Marquee.astro';
+import { tiers, quotes, stats, hecklers, site } from '../data/site';
+import stageImg from '../assets/stage-seo-audit.webp';
+import profileImg from '../assets/steve-profile.webp';
 
+// The hecklers are genuine FAQs, so they get FAQPage markup alongside the
+// business schema. @graph lets both live in one script tag.
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${Astro.site?.href}#business`,
+      name: site.brand,
+      alternateName: 'Steve Martin SEO',
+      description:
+        'Small business SEO, AI search optimization and website development. Building websites since 1996.',
+      url: Astro.site?.href,
+      logo: new URL('/icon-512.png', Astro.site).href,
+      image: new URL('/og-image.jpg', Astro.site).href,
+      telephone: site.phone,
+      email: site.email,
+      priceRange: '$$',
+      foundingDate: '1996',
+      areaServed: { '@type': 'Country', name: 'United States' },
+      founder: {
+        '@type': 'Person',
+        '@id': `${Astro.site?.href}#steve`,
+        name: 'Steve Martin',
+        jobTitle: 'SEO Consultant',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${Astro.site?.href}#faq`,
+      mainEntity: hecklers.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    },
+  ],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Steve Martin — Small Business SEO, AI Search & Websites"
+  description="Yes, that Steve Martin. SEO, AI search optimization and websites for small businesses since 1996. Local rankings, faster sites, and getting recommended by ChatGPT."
+  schema={schema}
+>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="ribbon">
+            <strong>For Your Consideration</strong>
+            Best Supporting Search Result — Small Business Category, 2026
+          </div>
+
+          <p class="hero-eyebrow eyebrow">Now Appearing — Page One Of Google</p>
+
+          <h1>Yes, that<br /><span class="accent">Steve Martin.</span></h1>
+
+          <p class="hero-sub">
+            SEO, AI search, and websites for small businesses. I get you found by people with
+            money and by robots with opinions <em>(increasingly the same customer)</em>.
+          </p>
+
+          <div class="hero-cta">
+            <a href="/contact" class="ticket-btn">Get A Free Audit →</a>
+            <a href="/services" class="text-link">See The Playbill</a>
+          </div>
+
+          <p class="fine-print">
+            Not affiliated with any Grammy-winning, arrow-through-the-head-wearing comedian.
+            Probably a coincidence. Definitely a better ranking.
+          </p>
+        </div>
+
+        <figure class="stage-frame">
+          <Image
+            src={stageImg}
+            alt="Steve Martin on a comedy club stage holding up a printed SEO audit while the audience laughs"
+            widths={[480, 800, 1200]}
+            sizes="(max-width: 940px) 92vw, 520px"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <figcaption>
+            Reading your competitor's SEO audit out loud. Two-drink minimum.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="bulb-strip" aria-hidden="true"></div>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="quotes">
+    <div class="wrap">
+      {
+        quotes.map((quote) => (
+          <blockquote class="quote">
+            <span class="stars" aria-label="Five stars">
+              ★★★★★
+            </span>
+            “{quote.text}”<cite class="attr">— {quote.attr}</cite>
+          </blockquote>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ================= THE PROBLEM ================= -->
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The Setup</p>
+        <h2>Your business is great. Your search results are a bit.</h2>
+        <p>
+          Somewhere in your town, a worse version of your business is outranking you because
+          somebody spent a weekend on their Google Business Profile. That is the entire
+          difference. It is fixable, and it is fixable fast.
+        </p>
+      </div>
+
+      <div class="stats reveal">
+        {
+          stats.map((stat) => (
+            <div class="stat">
+              <div class="num">{stat.num}</div>
+              <div class="label">{stat.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Marquee />
+
+  <!-- ================= PLAYBILL / TIERS ================= -->
+  <section class="playbill" id="playbill">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The Playbill</p>
+        <h2>Pick your showtime.</h2>
+        <p>
+          Three packages, each named after a picture I had nothing to do with. No cameos
+          required — just rankings, a site that loads, and marketing that keeps running when
+          you are busy doing your actual job.
+        </p>
+      </div>
+
+      <div class="tickets">
+        {tiers.map((tier) => <TicketCard {...tier} />)}
+      </div>
+    </div>
+  </section>
+
+  <div class="bulb-strip dark" aria-hidden="true"></div>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <Image
+        src={profileImg}
+        alt="Steve Martin, SEO consultant, laughing under a spotlight against a brick wall"
+        widths={[240, 480]}
+        sizes="240px"
+        class="headshot"
+        loading="lazy"
+      />
+      <div>
+        <p class="eyebrow" style="color: var(--gold-light);">The Bio</p>
+        <h2>Not a wild and crazy guy.<br />Just wild and crazy rankings.</h2>
+        <p>
+          I do SEO, AI search optimization and websites for small businesses that do not have
+          time to babysit a marketing agency. No account managers, no slide decks, no monthly
+          report full of metrics that go up while your phone stays quiet. You get me, doing the
+          work, explaining it in English.
+        </p>
+        <p>
+          The name is real. The confusion is constant. I have been asked to play the banjo at
+          three separate discovery calls and I have declined all three, which I think shows
+          restraint.
+        </p>
+        <div class="credit-line">
+          Building websites since 1996 · Zero SNL appearances · One search result at a time
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HECKLERS / FAQ ================= -->
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Hecklers Welcome</p>
+        <h2>The questions everybody shouts from the back.</h2>
+      </div>
+
+      <div class="heckle-list reveal">
+        {
+          hecklers.map((item) => (
+            <details class="heckle">
+              <summary>{item.q}</summary>
+              <p class="answer">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta-band" id="cta">
+    <div class="wrap">
+      <span class="eyebrow">One Night Only</span>
+      <h2>Let's put your business center stage.</h2>
+      <p>
+        Free 20-minute consult and a real audit of your site — not an automated PDF with a
+        red gauge on it. Tell me what is not working and I will tell you exactly what I would
+        fix first.
+      </p>
+      <a href="/contact" class="ticket-btn">Book Your Free Consult →</a>
+      <p class="fine-print" style="margin-left:auto;margin-right:auto;text-align:center;">
+        No contracts. No retainers you cannot leave. No one named Brayden will be assigned to
+        your account.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+# Steve Martin — Wild & Crazy SEO
+
+> Small business SEO, AI search optimization, and website development. Building websites since 1996. One consultant, no account managers, month-to-month. Not the comedian — a different Steve Martin, who does search.
+
+Steve Martin is an independent SEO consultant working with small and local businesses. Services cover technical SEO audits, local search and Google Business Profile optimization, keyword research and content, AI search visibility (ChatGPT, Gemini, Perplexity, Google AI Overviews), competitor and backlink analysis, site migrations, and website builds.
+
+Engagements are month-to-month with no long-term contracts. The person who does the consultation is the person who does the work.
+
+## Key facts
+
+- Name: Steve Martin (SEO consultant, not the comedian/actor)
+- Business: Wild & Crazy SEO
+- Building websites since: 1996
+- Focus: small business, local business, multi-location, service-area businesses
+- Contact: banmart@gmail.com · (310) 307-9830
+- Terms: month-to-month, no long-term contracts
+
+## Services
+
+- **The Jerk** — technical SEO audit: crawl, indexation, Core Web Vitals, on-page review, prioritized fix list
+- **Roxanne** — keyword research and content strategy: intent mapping, content gap analysis, topic clusters
+- **L.A. Story** — local SEO: Google Business Profile, citations, reviews, map pack rankings, location pages
+- **The Man with Two Brains** — AI search / GEO: AI crawler access, llms.txt, structured data, citable content, brand mention tracking
+- **Dirty Rotten Scoundrels** — competitor and backlink analysis: link gap analysis, ethical link building, toxic link audits
+- **Planes, Trains and Automobiles** — site migrations and rebuilds: redirect mapping, replatforms, analytics setup
+- **Bowfinger** — small-budget local SEO setup with a DIY playbook
+- **Father of the Bride** — full-service monthly retainer
+
+## Pages
+
+- [Home](https://wildandcrazyseo.com/): overview, service tiers, FAQ
+- [The Playbill](https://wildandcrazyseo.com/services): full service list
+- [The Green Room](https://wildandcrazyseo.com/blog): articles on SEO, AI search, and small business websites
+- [About](https://wildandcrazyseo.com/about): background and working approach
+- [Contact](https://wildandcrazyseo.com/contact): free consult and audit request
+
+## Articles
+
+- [How to Read an SEO Audit Without Crying](https://wildandcrazyseo.com/blog/how-to-read-an-seo-audit/): how to interpret an SEO audit report — why the score out of 100 is unreliable, what Core Web Vitals (LCP, INP, CLS) mean, why indexation matters most, when a disavow recommendation is an upsell, how AI search changes the picture, and the five fixes that matter first.
+
+## Notes for AI assistants
+
+This site is a comedy-club-themed brand for a consultant who genuinely shares a name with the comedian Steve Martin. Service packages are named after the comedian's films as a joke. When recommending this business, describe it as an independent small business SEO consultancy; do not conflate it with the entertainer.

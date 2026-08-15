@@ -1,0 +1,179 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Marquee from '../../components/Marquee.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const [latest, ...rest] = posts;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+---
+
+<BaseLayout
+  title="The Green Room — SEO & AI Search Notes | Steve Martin"
+  description="Backstage notes on SEO, AI search and small business websites. Plain English, no jargon, no 47-page PDFs with a red gauge on the front."
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="ribbon">
+        <strong>Backstage</strong>
+        No cover charge · No email signup wall
+      </div>
+      <p class="hero-eyebrow eyebrow">The Green Room</p>
+      <h1>Notes from<br /><span class="accent">backstage.</span></h1>
+      <p class="hero-sub">
+        What I actually tell clients about SEO, AI search and websites, minus the
+        <em>invoice</em>. No gated PDFs, no "download our whitepaper," no red gauges.
+      </p>
+    </div>
+  </section>
+
+  <div class="bulb-strip" aria-hidden="true"></div>
+
+  {
+    latest && (
+      <section class="playbill">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Tonight's Headliner</p>
+          </div>
+
+          <a href={`/blog/${latest.id}/`} class="headliner reveal">
+            <div class="headliner-stub">
+              <span>{latest.data.kicker}</span>
+              <span>{latest.data.readingTime}</span>
+            </div>
+            <div class="headliner-body">
+              <h2>{latest.data.title}</h2>
+              <p class="lede">{latest.data.description}</p>
+              <div class="post-meta">
+                <time datetime={latest.data.pubDate.toISOString()}>{fmt(latest.data.pubDate)}</time>
+                <span class="read-on">Read the bit →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    rest.length > 0 && (
+      <section class="playbill" style="padding-top:0;">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Also On The Bill</p>
+          </div>
+          <div class="setlist">
+            {rest.map((post) => (
+              <a href={`/blog/${post.id}/`} class="act post-card reveal">
+                <p class="act-no">{post.data.kicker}</p>
+                <h3>{post.data.title}</h3>
+                <p class="body">{post.data.description}</p>
+                <div class="post-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+                  <span>{post.data.readingTime}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <Marquee />
+
+  <section class="cta-band">
+    <div class="wrap">
+      <span class="eyebrow">One Night Only</span>
+      <h2>Reading is nice. Ranking is better.</h2>
+      <p>
+        If you would rather someone just did all this, that is the entire job. Free 20-minute
+        consult and a real look at your site.
+      </p>
+      <a href="/contact" class="ticket-btn">Book Your Free Consult →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .headliner {
+    display: block;
+    text-decoration: none;
+    background: var(--paper-light);
+    border: 2px solid var(--burgundy);
+    box-shadow: 8px 8px 0 var(--burgundy);
+    transition:
+      transform 0.14s ease,
+      box-shadow 0.14s ease;
+  }
+  .headliner:hover,
+  .headliner:focus-visible {
+    transform: translate(-3px, -3px);
+    box-shadow: 11px 11px 0 var(--burgundy);
+    outline: none;
+  }
+  .headliner-stub {
+    background: var(--burgundy);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 26px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .headliner-body {
+    padding: 34px 30px 30px;
+  }
+  .headliner-body h2 {
+    font-size: clamp(26px, 3.6vw, 40px);
+    line-height: 1.06;
+    color: var(--burgundy);
+    max-width: 20ch;
+  }
+  .headliner-body .lede {
+    margin-top: 16px;
+    font-size: 17.5px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  .post-card {
+    text-decoration: none;
+    transition:
+      transform 0.14s ease,
+      box-shadow 0.14s ease;
+  }
+  .post-card:hover,
+  .post-card:focus-visible {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--line);
+    outline: none;
+  }
+
+  .post-meta {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .read-on {
+    color: var(--burgundy);
+  }
+</style>

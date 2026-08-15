@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TicketCard from '../components/TicketCard.astro';
+import Marquee from '../components/Marquee.astro';
+import { acts, tiers, site } from '../data/site';
+
+const provider = {
+  '@type': 'ProfessionalService',
+  '@id': `${Astro.site?.href}#business`,
+  name: site.brand,
+};
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site?.href },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'The Playbill',
+          item: new URL('/services/', Astro.site).href,
+        },
+      ],
+    },
+    {
+      '@type': 'OfferCatalog',
+      name: 'SEO & Website Services',
+      provider,
+      itemListElement: acts.map((act, i) => ({
+        '@type': 'Offer',
+        position: i + 1,
+        itemOffered: {
+          '@type': 'Service',
+          name: act.title,
+          description: act.body,
+          serviceType: act.tagline,
+          provider,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="The Playbill — SEO, AI Search & Website Services | Steve Martin"
+  description="The full set list: technical SEO audits, local map pack rankings, AI search optimization, competitor teardowns, site migrations and full-service retainers for small businesses."
+  schema={schema}
+>
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Playbill · Full Set List</p>
+        <h2>Eight acts. One guy. No intermission.</h2>
+        <p>
+          Every service is named after a movie I was not in. Mix and match, or start with an
+          audit and we will figure out which acts you actually need. Most businesses need
+          three and get sold twelve.
+        </p>
+      </div>
+
+      <div class="setlist">
+        {
+          acts.map((act) => (
+            <article class="act reveal">
+              <p class="act-no">{act.no}</p>
+              <h3>{act.title}</h3>
+              <p class="tagline">{act.tagline}</p>
+              <p class="body">{act.body}</p>
+              <ul>
+                {act.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Marquee />
+
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Box Office</p>
+        <h2>Or just buy a ticket.</h2>
+        <p>
+          If picking from a menu of eight is its own kind of stressful, these three bundles
+          cover what most small businesses actually need.
+        </p>
+      </div>
+
+      <div class="tickets">
+        {tiers.map((tier) => <TicketCard {...tier} />)}
+      </div>
+    </div>
+  </section>
+
+  <div class="bulb-strip dark" aria-hidden="true"></div>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <span class="eyebrow">Curtain Up</span>
+      <h2>Not sure which act you need?</h2>
+      <p>
+        That is genuinely the most common question, and it is what the free audit is for. I
+        will look at your site, your competitors, and what AI assistants currently say about
+        your industry, and then tell you where the money is.
+      </p>
+      <a href="/contact" class="ticket-btn">Get A Free Audit →</a>
+    </div>
+  </section>
+</BaseLayout>

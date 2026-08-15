@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Not useful in search results — it only exists as a form redirect target.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Thanks — your message is in',
+};
+---
+
+<BaseLayout
+  title="Thanks — Message Received | Steve Martin"
+  description="Your consult request came through. Reply within one business day."
+  schema={schema}
+  noindex
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="ribbon">
+        <strong>Ticket Confirmed</strong>
+        Row A · Seat 01 · No refunds, no cover charge
+      </div>
+      <p class="hero-eyebrow eyebrow">Curtain Up</p>
+      <h1>You're on<br /><span class="accent">the list.</span></h1>
+      <p class="hero-sub">
+        Message received. I read everything myself, and you'll hear back within one business
+        day — <em>usually much sooner</em>, because I am almost always at this desk.
+      </p>
+      <div class="hero-cta">
+        <a href="/blog/" class="ticket-btn">Read Something While You Wait →</a>
+        <a href="/" class="text-link">Back To The Lobby</a>
+      </div>
+      <p class="fine-print">
+        If nothing arrives within a day, check your spam folder — then email me directly,
+        because something in the pipes broke and I would genuinely like to know.
+      </p>
+    </div>
+  </section>
+
+  <div class="bulb-strip" aria-hidden="true"></div>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <span class="eyebrow">In The Meantime</span>
+      <h2>Here's what I'd check first.</h2>
+      <p>
+        The five things that matter most on almost every small business site, in the order I
+        would fix them. It is the same list I would send you anyway.
+      </p>
+      <a href="/blog/how-to-read-an-seo-audit/" class="ticket-btn">
+        How To Read An SEO Audit →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,13 @@
+{
+  "name": "Wild & Crazy SEO — Steve Martin",
+  "short_name": "Wild & Crazy SEO",
+  "description": "Small business SEO, AI search and websites. Building websites since 1996.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F1E8D6",
+  "theme_color": "#7A1F2B",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

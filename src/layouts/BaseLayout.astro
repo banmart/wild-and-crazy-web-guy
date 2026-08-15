@@ -1,0 +1,201 @@
+---
+import '../styles/global.css';
+import TopBar from '../components/TopBar.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** "article" on blog posts, "website" everywhere else. */
+  ogType?: string;
+  /** Overrides the default ProfessionalService schema (blog posts pass BlogPosting). */
+  schema?: Record<string, unknown>;
+  /** Keeps a page out of search results — form redirect targets, etc. */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogType = 'website',
+  schema: schemaOverride,
+  noindex = false,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og-image.jpg', Astro.site).href;
+const logo = new URL('/icon-512.png', Astro.site).href;
+
+const person = {
+  '@type': 'Person',
+  '@id': `${Astro.site?.href}#steve`,
+  name: 'Steve Martin',
+  jobTitle: 'SEO Consultant',
+  image: logo,
+  url: new URL('/about/', Astro.site).href,
+  description:
+    'Small business SEO, AI search optimization and website development. Not the comedian.',
+  knowsAbout: [
+    'Search Engine Optimization',
+    'Local SEO',
+    'Generative Engine Optimization',
+    'Technical SEO',
+    'Core Web Vitals',
+    'Web Development',
+  ],
+};
+
+const schema = schemaOverride ?? {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${Astro.site?.href}#business`,
+  name: site.brand,
+  alternateName: 'Steve Martin SEO',
+  description,
+  url: Astro.site?.href,
+  logo,
+  image: ogImage,
+  telephone: site.phone,
+  email: site.email,
+  priceRange: '$$',
+  foundingDate: '1996',
+  areaServed: { '@type': 'Country', name: 'United States' },
+  serviceType: [
+    'Search Engine Optimization',
+    'Local SEO',
+    'AI Search Optimization',
+    'Website Development',
+  ],
+  founder: person,
+  employee: person,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="author" content="Steve Martin" />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}
+    />
+    <meta name="theme-color" content="#7A1F2B" />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.brand} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Steve Martin — SEO, AI Search and Websites for Small Business" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=Libre+Baskerville:wght@400;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <!-- Scroll-reveal starts at opacity:0; without JS it must never hide content. -->
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <TopBar />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Marquee bulbs — rendered client-side so the markup stays clean.
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const strips = document.querySelectorAll<HTMLElement>('.bulb-strip');
+
+      const fillStrip = (strip: HTMLElement) => {
+        // Measure the viewport: these strips are always full-bleed, and reading
+        // element width during initial layout can return 0.
+        const count = Math.max(12, Math.floor(window.innerWidth / 40));
+        if (strip.childElementCount === count) return;
+
+        strip.replaceChildren();
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < count; i++) {
+          const b = document.createElement('div');
+          b.className = 'bulb';
+          if (!prefersReduced) b.style.animationDelay = `${i * 0.09}s`;
+          frag.appendChild(b);
+        }
+        strip.appendChild(frag);
+      };
+
+      const fillAll = () => strips.forEach(fillStrip);
+
+      fillAll();
+
+      let resizeTimer: number;
+      window.addEventListener('resize', () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(fillAll, 150);
+      });
+
+      // Scroll reveal
+      const revealables = document.querySelectorAll('.reveal');
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        revealables.forEach((el) => el.classList.add('is-in'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -60px 0px' }
+        );
+        revealables.forEach((el) => io.observe(el));
+      }
+
+      // Mobile nav
+      const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+      const mobileNav = document.querySelector<HTMLElement>('.mobile-nav');
+      toggle?.addEventListener('click', () => {
+        const open = mobileNav?.dataset.open === 'true';
+        if (mobileNav) mobileNav.dataset.open = String(!open);
+        toggle.setAttribute('aria-expanded', String(!open));
+        toggle.textContent = !open ? 'Close' : 'Menu';
+      });
+    </script>
+  </body>
+</html>

@@ -1,43 +1,80 @@
-# Astro Starter Kit: Minimal
+# Wild & Crazy SEO — Steve Martin
 
-```sh
-npm create astro@latest -- --template minimal
+Astro site for Steve Martin, small business SEO consultant. Comedy-club playbill theme.
+
+```bash
+npm run dev      # localhost:4321
+npm run build    # static output to dist/
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Structure
 
-## 🚀 Project Structure
+| Path | What |
+|---|---|
+| `src/data/site.ts` | **All copy and jokes.** Tiers, services, testimonials, FAQ, contact. |
+| `src/content/blog/` | Blog posts. Drop in a `.md` file — routing, sitemap and hub pick it up. |
+| `src/styles/global.css` | Whole theme. Tokens at the top. |
+| `src/layouts/BaseLayout.astro` | Meta, OG, favicons, schema, client scripts. |
+| `src/components/` | TopBar, Footer, Marquee, TicketCard. |
+| `src/assets/` | Source photos (WebP). Astro emits sized variants at build. |
+| `scripts/generate-assets.mjs` | Regenerates favicons + OG image from the profile photo. |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Assets
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Run after replacing any photo in `src/assets`:
+
+```bash
+node scripts/generate-assets.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Converts source photos to WebP, then builds `favicon.ico`, `favicon-16/32.png`,
+`apple-touch-icon.png`, `icon-192/512.png`, and a composited 1200×630 `og-image.jpg`
+from `steve-profile.webp`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The OG image stays **JPEG** deliberately — several social crawlers still handle WebP
+previews badly. Everything rendered on the site itself is WebP.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Contact form
 
-## 🧞 Commands
+Posts to **FormSubmit** → `banmart@gmail.com`. No account required.
 
-All commands are run from the root of the project, from a terminal:
+**The first submission triggers a one-time confirmation email.** Click the link in it
+once and the form is live permanently. Until then, submissions are not delivered.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Two things worth knowing:
 
-## 👀 Want to learn more?
+1. The email address appears in the page source, so scrapers can read it. FormSubmit
+   issues a hashed endpoint (`https://formsubmit.co/abc123…`) after activation — swap
+   `site.formEmail` usage in `src/pages/contact.astro` for that hash to hide it.
+2. Submissions pass through FormSubmit's servers. If that is not acceptable, swap the
+   `action` for Netlify Forms, Formspree, or your own handler — the field names are
+   standard and will carry over.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Successful submits redirect to `/thanks/`, which is `noindex` and excluded from the sitemap.
+
+## SEO
+
+Already wired:
+
+- Per-page canonical, title, description, OG + Twitter cards with the branded image
+- `ProfessionalService` + `Person` schema sitewide, `FAQPage` on the homepage,
+  `OfferCatalog`/`Service` on services, `BlogPosting` + `BreadcrumbList` on posts
+- `sitemap-index.xml` (auto), `robots.txt`, `llms.txt`, `site.webmanifest`
+- AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.) explicitly allowed
+- `max-image-preview:large`, `theme-color`, full favicon set
+
+Before launch:
+
+- **Domain** — `SITE_URL` in `astro.config.mjs`, the `Sitemap:` line in `public/robots.txt`,
+  the URLs in `public/llms.txt`, and `_next` in the contact form.
+- **Placeholder content** — grep `PLACEHOLDER`. Pricing, testimonials, and two of the
+  four stats are invented. Contact details and "since 1996" are real.
+
+## Notes
+
+- Zero framework JS. One ~50-line script in `BaseLayout.astro` handles marquee bulbs,
+  scroll reveals, and the mobile nav. Reveals have a `<noscript>` fallback.
+- All animation respects `prefers-reduced-motion`.
+- Adding a page: drop a `.astro` file in `src/pages/`, use `BaseLayout`, add it to `nav`
+  in `src/data/site.ts`.

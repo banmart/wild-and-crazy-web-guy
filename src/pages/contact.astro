@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Book A Free Audit — Contact Steve Martin | Wild & Crazy SEO"
+  description="Free 20-minute consult and a real SEO audit for your small business. No contracts, no account managers, no automated PDF with a red gauge on it."
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="ribbon">
+        <strong>Box Office</strong>
+        Walk-ups welcome · Two-drink minimum waived
+      </div>
+      <p class="hero-eyebrow eyebrow">Reserve Your Seat</p>
+      <h1>Let's book<br /><span class="accent">the show.</span></h1>
+      <p class="hero-sub">
+        Free 20-minute consult, a real look at your site, and an honest answer about whether
+        you need me at all <em>(sometimes you don't — I'll say so)</em>.
+      </p>
+    </div>
+  </section>
+
+  <div class="bulb-strip" aria-hidden="true"></div>
+
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Booking Form</p>
+        <h2>Tell me what's not working.</h2>
+        <p>
+          The more specific you are, the more useful the first call is. "Our phone stopped
+          ringing in March" is a better brief than "we need SEO."
+        </p>
+      </div>
+
+      <!--
+        Delivered to site.formEmail via FormSubmit (no account needed).
+        The FIRST submission triggers a one-time confirmation email — click the link
+        in it once and the form is live for good.
+        See README for swapping to FormSubmit's hashed endpoint so the address
+        is not exposed in the page source.
+      -->
+      <form
+        class="form-grid reveal"
+        method="POST"
+        action={`https://formsubmit.co/${site.formEmail}`}
+      >
+        <!-- FormSubmit configuration -->
+        <input type="hidden" name="_subject" value="New consult request — wildandcrazyseo.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="hidden" name="_next" value="https://wildandcrazyseo.com/thanks/" />
+        <!-- Honeypot: bots fill this, humans never see it. -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honeypot" />
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="business">Business name</label>
+          <input id="business" name="business" type="text" required autocomplete="organization" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="website">Current website</label>
+          <input id="website" name="website" type="url" placeholder="https://" />
+          <p class="hint">If you don't have one, that's a valid answer and a good starting point.</p>
+        </div>
+
+        <div class="field full">
+          <label for="act">Which act are you interested in?</label>
+          <select id="act" name="act">
+            <option>Not sure yet — help me figure it out</option>
+            <option>The Jerk — technical audit</option>
+            <option>Roxanne — keyword research &amp; content</option>
+            <option>L.A. Story — local SEO &amp; map pack</option>
+            <option>The Man with Two Brains — AI search visibility</option>
+            <option>Dirty Rotten Scoundrels — competitor teardown</option>
+            <option>Planes, Trains and Automobiles — rebuild or migration</option>
+            <option>Bowfinger — small budget, big ambition</option>
+            <option>Father of the Bride — full service</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="message">What's going on?</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            placeholder="Where the phone stopped ringing, who's outranking you, what your last agency promised…"></textarea>
+        </div>
+
+        <div class="field full">
+          <button type="submit" class="ticket-btn">Send It →</button>
+          <p class="hint" style="margin-top:14px;">
+            I answer everything within one business day. If I'm full, I'll tell you that instead
+            of stringing you along for three weeks.
+          </p>
+        </div>
+      </form>
+
+      <style>
+        .honeypot {
+          position: absolute;
+          left: -9999px;
+          width: 1px;
+          height: 1px;
+          opacity: 0;
+          pointer-events: none;
+        }
+      </style>
+    </div>
+  </section>
+
+  <div class="bulb-strip dark" aria-hidden="true"></div>
+
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head center">
+        <p class="eyebrow">Or Skip The Form</p>
+        <h2>Stage door's open.</h2>
+        <p>
+          <!-- PLACEHOLDER contact details — swap in data/site.ts -->
+          Email <a href={`mailto:${site.email}`} class="text-link">{site.email}</a><br /><br />
+          Call or text <a href={`tel:${site.phoneHref}`} class="text-link">{site.phone}</a><br /><br />
+          {site.location}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" style="padding-top:0;">
+    <div class="wrap">
+      <p class="fine-print" style="margin-left:auto;margin-right:auto;text-align:center;">
+        Still not affiliated with the comedian. He does not take these calls either.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

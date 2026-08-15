@@ -1,0 +1,49 @@
+---
+interface Props {
+  row: string;
+  seat: string;
+  film: string;
+  tagline: string;
+  price: string;
+  items: string[];
+  feature?: boolean;
+  soldOut?: boolean;
+}
+
+const { row, seat, film, tagline, price, items, feature = false, soldOut = false } = Astro.props;
+---
+
+<article class:list={['ticket', 'reveal', { feature }]}>
+  {soldOut && <div class="sold-out">Sold Out</div>}
+
+  <div class="ticket-top">
+    <span class="ticket-row">{row}</span>
+    <span class="ticket-seat">{seat}</span>
+  </div>
+
+  <div class="perf"></div>
+
+  <div class="ticket-body">
+    <h3 class="film">{film}</h3>
+    <p class="tagline">{tagline}</p>
+    <p class="price">{price}</p>
+    <ul>
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+    <a href="/contact" class="ticket-btn small">
+      Reserve This Tier
+      <span class="sr-only"> — {film}</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+</style>

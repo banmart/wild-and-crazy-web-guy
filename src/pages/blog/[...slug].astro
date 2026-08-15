@@ -1,0 +1,355 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: post.data.pubDate.toISOString(),
+      dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+      keywords: post.data.tags.join(', '),
+      articleSection: post.data.tags[0],
+      inLanguage: 'en-US',
+      image: new URL('/og-image.jpg', Astro.site).href,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      author: {
+        '@type': 'Person',
+        '@id': `${Astro.site?.href}#steve`,
+        name: 'Steve Martin',
+        jobTitle: 'SEO Consultant',
+        url: new URL('/about/', Astro.site).href,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: site.brand,
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL('/icon-512.png', Astro.site).href,
+        },
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site?.href },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'The Green Room',
+          item: new URL('/blog/', Astro.site).href,
+        },
+        { '@type': 'ListItem', position: 3, name: post.data.title, item: canonical },
+      ],
+    },
+  ],
+};
+
+// Only h2s — h3s make the bill too long.
+const toc = headings.filter((h) => h.depth === 2);
+---
+
+<BaseLayout
+  title={`${post.data.title} | Steve Martin`}
+  description={post.data.description}
+  ogType="article"
+  schema={schema}
+>
+  <article>
+    <section class="hero post-hero">
+      <div class="wrap">
+        <p class="hero-eyebrow eyebrow">
+          <a href="/blog/" class="back-link">The Green Room</a> · {post.data.kicker}
+        </p>
+        <h1>{post.data.title}</h1>
+        <p class="hero-sub">{post.data.description}</p>
+
+        <div class="byline">
+          <span>By <strong>Steve Martin</strong> (the SEO one)</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+          <span aria-hidden="true">·</span>
+          <span>{post.data.readingTime}</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="bulb-strip" aria-hidden="true"></div>
+
+    <section class="playbill post-layout">
+      <div class="wrap">
+        <div class="post-grid">
+          <aside class="toc" aria-label="On this page">
+            <p class="toc-title">Tonight's Set</p>
+            <ol>
+              {
+                toc.map((h) => (
+                  <li>
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))
+              }
+            </ol>
+          </aside>
+
+          <div class="post-body">
+            <Content />
+
+            <div class="post-cta">
+              <p class="eyebrow">Encore</p>
+              <p>
+                Want a second opinion on an audit somebody already sent you? I will read it and
+                tell you which parts are real — free, and it will not take 47 pages.
+              </p>
+              <a href="/contact" class="ticket-btn small">Send Me Your Audit →</a>
+            </div>
+
+            <div class="tags">
+              {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <span class="eyebrow">Next Show</span>
+      <h2>More from the green room.</h2>
+      <p>Plain-English notes on SEO, AI search, and websites that load before customers leave.</p>
+      <a href="/blog/" class="ticket-btn">Back To The Green Room →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .post-hero h1 {
+    font-size: clamp(34px, 5.2vw, 62px);
+    max-width: 22ch;
+    line-height: 1.02;
+  }
+  .back-link {
+    color: var(--burgundy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--burgundy);
+  }
+  .byline {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .byline strong {
+    color: var(--burgundy);
+  }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .post-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .toc {
+    position: sticky;
+    top: 110px;
+    border-left: 2px solid var(--burgundy);
+    padding-left: 18px;
+  }
+  @media (max-width: 900px) {
+    .toc {
+      position: static;
+      background: var(--paper-light);
+      border: 2px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--line);
+      padding: 20px 22px;
+    }
+  }
+  .toc-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 14px;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    margin-bottom: 11px;
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+  .toc li::before {
+    content: counter(toc, upper-roman) '. ';
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+  }
+  .toc a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+  }
+  .toc a:hover,
+  .toc a:focus-visible {
+    color: var(--burgundy);
+    border-color: var(--burgundy);
+    outline: none;
+  }
+
+  /* ---- article typography ---- */
+  .post-body {
+    max-width: 68ch;
+  }
+  .post-body :global(p) {
+    margin-top: 20px;
+    font-size: 17.5px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+  .post-body :global(p:first-child) {
+    margin-top: 0;
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .post-body :global(h2) {
+    margin-top: 54px;
+    font-size: clamp(24px, 3vw, 31px);
+    line-height: 1.14;
+    scroll-margin-top: 110px;
+  }
+  .post-body :global(h2::before) {
+    content: '✶ ';
+    color: var(--gold);
+  }
+  .post-body :global(h3) {
+    margin-top: 40px;
+    font-size: 20px;
+    color: var(--burgundy);
+    scroll-margin-top: 110px;
+  }
+  .post-body :global(strong) {
+    color: var(--ink);
+  }
+  .post-body :global(em) {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--burgundy);
+  }
+  .post-body :global(a) {
+    color: var(--burgundy);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    margin-top: 20px;
+    padding-left: 4px;
+    list-style-position: inside;
+  }
+  .post-body :global(li) {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .post-body :global(li:last-child) {
+    border-bottom: none;
+  }
+  .post-body :global(ul li::marker) {
+    content: '✶  ';
+    color: var(--gold);
+  }
+  .post-body :global(ol li::marker) {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--burgundy);
+  }
+  .post-body :global(code) {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.88em;
+    background: rgba(200, 155, 60, 0.2);
+    border: 1px solid var(--line);
+    padding: 2px 6px;
+  }
+  .post-body :global(hr) {
+    margin: 46px 0;
+    border: none;
+    border-top: 2px dashed var(--line);
+  }
+  .post-body :global(blockquote) {
+    margin-top: 26px;
+    padding: 4px 0 4px 24px;
+    border-left: 3px solid var(--gold);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+  }
+
+  .post-cta {
+    margin-top: 56px;
+    background: var(--stage-blue);
+    border: 2px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--gold);
+    padding: 30px 28px;
+  }
+  .post-cta .eyebrow {
+    color: var(--gold-light);
+  }
+  .post-cta p {
+    margin-top: 12px;
+    margin-bottom: 22px;
+    color: rgba(250, 243, 228, 0.9);
+    font-size: 16.5px;
+  }
+
+  .tags {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    padding: 6px 11px;
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,0 +1,168 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { hecklers, stats } from '../data/site';
+import officeImg from '../assets/office-chaos.webp';
+import profileImg from '../assets/steve-profile.webp';
+---
+
+<BaseLayout
+  title="About Steve Martin — The Other One | Wild & Crazy SEO"
+  description="A small business SEO consultant who happens to share a name with a famous comedian. No account managers, no contracts, no slide decks. Just the person doing the work."
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="hero-eyebrow eyebrow">The Bio · Act One</p>
+          <h1>The other<br /><span class="accent">Steve Martin.</span></h1>
+          <p class="hero-sub">
+            Building websites since 1996, and one lifetime of explaining that no,
+            <em>I cannot get you tickets</em>.
+          </p>
+        </div>
+
+        <figure class="stage-frame">
+          <Image
+            src={officeImg}
+            alt="Steve Martin in a suit holding floppy disks and a vintage microphone, papers flying, whiteboards covered in growth charts behind him"
+            widths={[480, 800, 1200]}
+            sizes="(max-width: 940px) 92vw, 520px"
+            loading="eager"
+          />
+          <figcaption>
+            My actual tech stack. The floppy disks are for the clients who ask if I back things up.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="bulb-strip" aria-hidden="true"></div>
+
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head" style="max-width:none;">
+        <p class="eyebrow">The Long Version</p>
+        <h2>How this happened.</h2>
+      </div>
+
+      <div class="prose reveal">
+        <p>
+          I built my first website in 1996. It had a visitor counter, a background tile, and a
+          line of text that said "best viewed in Netscape Navigator." It was, at the time,
+          genuinely impressive. I have been building them ever since, which means I have
+          personally lived through every algorithm update, every redesign trend, and every
+          confident prediction that SEO was about to die.
+        </p>
+
+        <p>
+          I have also had this name the entire time. For the first thirty years it was a
+          punchline at the DMV. Then I started doing this for a living and discovered that a
+          memorable name is, professionally speaking, an unfair advantage. Nobody forgets who
+          did their website.
+        </p>
+
+        <p>
+          The work itself is not funny at all. Most small businesses are losing customers for
+          three or four extremely boring reasons: the site takes nine seconds to load, the
+          Google Business Profile has the wrong hours, nobody has published anything since
+          2019, and AI assistants have never heard of them. Fix those and the phone rings.
+          There is no fifth secret thing. Anyone selling you a fifth secret thing is selling
+          you a retainer.
+        </p>
+
+        <h3>What working with me actually looks like</h3>
+
+        <p>
+          You talk to me. Not a salesperson who disappears after the contract, not an account
+          manager who forwards your email to a contractor eleven time zones away. Me. I do the
+          audit, I write the plan, I do the work, and when something does not go the way I said
+          it would, I am the one who tells you.
+        </p>
+
+        <p>
+          I take a small number of clients on purpose. It is the only way the above stays true.
+          When I am full, I will tell you I am full and point you to somebody good, which is a
+          sentence most agencies are physically incapable of saying.
+        </p>
+
+        <h3>The name thing</h3>
+
+        <p>
+          Yes, I know. No, I have never played the banjo. Yes, someone has sung
+          <em>King Tut</em> at me on a discovery call. He is a client now, so I suppose it
+          worked.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="playbill" style="padding-top:0;">
+    <div class="wrap">
+      <div class="stats reveal">
+        {
+          stats.map((stat) => (
+            <div class="stat">
+              <div class="num">{stat.num}</div>
+              <div class="label">{stat.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="wrap">
+      <Image
+        src={profileImg}
+        alt="Steve Martin, SEO consultant, laughing under a spotlight"
+        widths={[240, 480]}
+        sizes="240px"
+        class="headshot"
+        loading="lazy"
+      />
+      <div>
+        <p class="eyebrow" style="color: var(--gold-light);">The Short Version</p>
+        <h2>Small business SEO, done by one person who answers the phone.</h2>
+        <p>
+          Local search, AI visibility, technical fixes and websites that load fast. Month to
+          month. Plain English. Based wherever the Wi-Fi is, working with businesses that would
+          rather be busy than be marketed at.
+        </p>
+        <div class="credit-line">
+          Building websites since 1996 · Zero SNL appearances · One search result at a time
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="playbill">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Hecklers Welcome</p>
+        <h2>Questions I get shouted at me.</h2>
+      </div>
+      <div class="heckle-list reveal">
+        {
+          hecklers.map((item) => (
+            <details class="heckle">
+              <summary>{item.q}</summary>
+              <p class="answer">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <span class="eyebrow">One Night Only</span>
+      <h2>Enough about me.</h2>
+      <p>Tell me what your website is doing to you and I will tell you how to stop it.</p>
+      <a href="/contact" class="ticket-btn">Book Your Free Consult →</a>
+    </div>
+  </section>
+</BaseLayout>

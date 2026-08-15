@@ -1,0 +1,11 @@
+---
+import { marqueeItems } from '../data/site';
+// Duplicated once so the -50% translate loops seamlessly.
+const items = [...marqueeItems, ...marqueeItems];
+---
+
+<div class="scroller" aria-hidden="true">
+  <div class="scroller-track">
+    {items.map((item) => <span>{item}</span>)}
+  </div>
+</div>

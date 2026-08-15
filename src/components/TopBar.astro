@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import { nav, site } from '../data/site';
+import logoImg from '../assets/steve-profile.webp';
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path === `${href}/`;
+---
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="wordmark">
+      <Image
+        src={logoImg}
+        alt=""
+        width={44}
+        height={44}
+        loading="eager"
+        class="logo-mark"
+        aria-hidden="true"
+      />
+      <span class="wordmark-text">
+        STEVE <span>MARTIN</span>
+        <small>Wild &amp; Crazy SEO</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a href={site.bookingUrl} class="ticket-btn small">Book Now</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+      Menu
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" data-open="false" aria-label="Mobile">
+    {
+      nav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+    <a href={site.bookingUrl} style="color: var(--burgundy);">Book Now →</a>
+  </nav>
+</header>
