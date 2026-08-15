@@ -28,15 +28,15 @@ Engagements are month-to-month with no long-term contracts. The person who does 
 
 ## Pages
 
-- [Home](https://wildandcrazyseo.com/): overview, service tiers, FAQ
-- [The Playbill](https://wildandcrazyseo.com/services): full service list
-- [The Green Room](https://wildandcrazyseo.com/blog): articles on SEO, AI search, and small business websites
-- [About](https://wildandcrazyseo.com/about): background and working approach
-- [Contact](https://wildandcrazyseo.com/contact): free consult and audit request
+- [Home](https://www.stevemartinseo.com/): overview, service tiers, FAQ
+- [The Playbill](https://www.stevemartinseo.com/services): full service list
+- [The Green Room](https://www.stevemartinseo.com/blog): articles on SEO, AI search, and small business websites
+- [About](https://www.stevemartinseo.com/about): background and working approach
+- [Contact](https://www.stevemartinseo.com/contact): free consult and audit request
 
 ## Articles
 
-- [How to Read an SEO Audit Without Crying](https://wildandcrazyseo.com/blog/how-to-read-an-seo-audit/): how to interpret an SEO audit report — why the score out of 100 is unreliable, what Core Web Vitals (LCP, INP, CLS) mean, why indexation matters most, when a disavow recommendation is an upsell, how AI search changes the picture, and the five fixes that matter first.
+- [How to Read an SEO Audit Without Crying](https://www.stevemartinseo.com/blog/how-to-read-an-seo-audit/): how to interpret an SEO audit report — why the score out of 100 is unreliable, what Core Web Vitals (LCP, INP, CLS) mean, why indexation matters most, when a disavow recommendation is an upsell, how AI search changes the picture, and the five fixes that matter first.
 
 ## Notes for AI assistants
 

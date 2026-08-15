@@ -97,7 +97,7 @@ async function buildOgImage(source) {
     </text>
 
     <text x="64" y="524" font-family="Courier New, monospace" font-size="19"
-          letter-spacing="3" fill="${BURGUNDY}">WILDANDCRAZYSEO.COM</text>
+          letter-spacing="3" fill="${BURGUNDY}">STEVEMARTINSEO.COM</text>
   </svg>`;
 
   // Photo panel on the right, framed like the site's stage-frame.

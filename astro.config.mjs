@@ -2,8 +2,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// PLACEHOLDER: swap for the real production domain before launch.
-export const SITE_URL = 'https://wildandcrazyseo.com';
+// Canonical host. Keep the www — canonicals, OG URLs and the sitemap all derive
+// from this, so the apex must 301 to www at the host/DNS level to avoid split signals.
+export const SITE_URL = 'https://www.stevemartinseo.com';
 
 // https://astro.build/config
 export default defineConfig({

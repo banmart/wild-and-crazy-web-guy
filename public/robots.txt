@@ -50,4 +50,4 @@ Allow: /
 # --- Housekeeping ---
 Disallow: /_astro/*.map$
 
-Sitemap: https://wildandcrazyseo.com/sitemap-index.xml
+Sitemap: https://www.stevemartinseo.com/sitemap-index.xml
