@@ -7,8 +7,8 @@ import profileImg from '../assets/steve-profile.webp';
 ---
 
 <BaseLayout
-  title="About Steve Martin, The Other One | Wild & Crazy SEO"
-  description="A small business SEO consultant who happens to share a name with a famous comedian. No account managers, no contracts, no slide decks. Just the person doing the work."
+  title="About Steve Martin, The Other One | Gobiya SEO Los Angeles"
+  description="Steve Martin (the SEO one) has been building websites since 1996, running SEO since Google's early years, and answering for his name for longer than that. BBB A+ rated. No account managers. Based in Los Angeles."
 >
   <section class="hero">
     <div class="wrap">
@@ -20,6 +20,12 @@ import profileImg from '../assets/steve-profile.webp';
             Building websites since 1996, and one lifetime of explaining that no,
             <em>I cannot get you tickets</em>.
           </p>
+          <div class="hero-creds">
+            <span class="cred-pill">BBB A+</span>
+            <span class="cred-pill">Est. 2010</span>
+            <span class="cred-pill">Los Angeles</span>
+            <span class="cred-pill">Bilingual EN / ES</span>
+          </div>
         </div>
 
         <figure class="stage-frame">
@@ -40,6 +46,31 @@ import profileImg from '../assets/steve-profile.webp';
 
   <div class="bulb-strip" aria-hidden="true"></div>
 
+  <!-- Stats bar -->
+  <section class="playbill" style="padding-bottom: 0;">
+    <div class="wrap">
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="num">1996</div>
+          <div class="label">First website. Visitor counter. Background tile. Peak UX.</div>
+        </div>
+        <div class="stat">
+          <div class="num">25+ yrs</div>
+          <div class="label">Web dev & SEO experience — since before "SEO" was a word</div>
+        </div>
+        <div class="stat">
+          <div class="num">1.4M</div>
+          <div class="label">URI paths analyzed in a single forensic scan</div>
+        </div>
+        <div class="stat">
+          <div class="num">92%</div>
+          <div class="label">Algorithm recovery rate. Median time: six weeks.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main bio -->
   <section class="playbill">
     <div class="wrap">
       <div class="section-head" style="max-width:none;">
@@ -49,42 +80,54 @@ import profileImg from '../assets/steve-profile.webp';
 
       <div class="prose reveal">
         <p>
-          I built my first website in 1996. It had a visitor counter, a background tile, and a
-          line of text that said "best viewed in Netscape Navigator." It was, at the time,
-          genuinely impressive. I have been building them ever since, which means I have
-          personally lived through every algorithm update, every redesign trend, and every
-          confident prediction that SEO was about to die.
+          I built my first website in 1996 at AT&T WorldNet in Burbank, helping businesses put
+          themselves on the internet for the first time. The sites had visitor counters, tiled
+          backgrounds, and lines of text that said "best viewed in Netscape Navigator." They were,
+          at the time, genuinely impressive.
         </p>
 
         <p>
-          I have also had this name the entire time. For the first thirty years it was a
-          punchline at the DMV. Then I started doing this for a living and discovered that a
-          memorable name is, professionally speaking, an unfair advantage. Nobody forgets who
-          did their website.
+          From 2000 to 2005 I was at Webcastr.com in West Hollywood, building a video content
+          distribution platform for Sony Music artists — engineering and organic search practiced
+          side by side from the start, before anyone had a word for what we were doing.
         </p>
 
         <p>
-          The work itself is not funny at all. Most small businesses are losing customers for
-          three or four extremely boring reasons: the site takes nine seconds to load, the
-          Google Business Profile has the wrong hours, nobody has published anything since
-          2019, and AI assistants have never heard of them. Fix those and the phone rings.
-          There is no fifth secret thing. Anyone selling you a fifth secret thing is selling
-          you a retainer.
+          Then came the in-house years: internet marketing and website management for a plumbing
+          company in Los Angeles, where I learned that a top Google Maps ranking for "emergency
+          plumber" at 2 AM is worth more than any award in a lobby display case. In 2010 I founded
+          Gobiya to do that work professionally, and incorporated it as Gobiya LLC in 2012.
         </p>
 
-        <h3>What working with me actually looks like</h3>
+        <p>
+          I have also had this name the entire time. For the first thirty years it was a punchline
+          at the DMV. Then I started doing this for a living and discovered that a memorable name
+          is, professionally speaking, an unfair advantage. Nobody forgets who did their website.
+        </p>
+
+        <h3>What the work actually looks like</h3>
 
         <p>
-          You talk to me. Not a salesperson who disappears after the contract, not an account
-          manager who forwards your email to a contractor eleven time zones away. Me. I do the
-          audit, I write the plan, I do the work, and when something does not go the way I said
-          it would, I am the one who tells you.
+          Gobiya is not a roster of account managers. It is an engineering practice with one name
+          on the work. You talk to me. Not a salesperson who disappears after the contract, not an
+          account manager who forwards your email to a contractor eleven time zones away. I do the
+          audit, I write the plan, I do the work, and when something does not go the way I said it
+          would, I am the one who tells you.
         </p>
 
         <p>
           I take a small number of clients on purpose. It is the only way the above stays true.
-          When I am full, I will tell you I am full and point you to somebody good, which is a
-          sentence most agencies are physically incapable of saying.
+          When I am full, I will tell you I am full and point you to somebody good — a sentence
+          most agencies are physically incapable of saying.
+        </p>
+
+        <h3>Documented results</h3>
+
+        <p>
+          Five times the patient inquiries for a dental practice. Forty-five percent organic
+          traffic growth for a home remodeling company. 5.7× Google Ads ROAS for a windows and
+          doors company. A sixty-one percent reduction in cost per lead for a B2B SaaS company.
+          These are not projections on a slide deck. They are what happened.
         </p>
 
         <h3>The name thing</h3>
@@ -98,26 +141,149 @@ import profileImg from '../assets/steve-profile.webp';
     </div>
   </section>
 
-  <section class="playbill" style="padding-top:0;">
+  <!-- Career timeline -->
+  <section class="playbill" style="padding-top: 0;">
     <div class="wrap">
-      <div class="stats reveal">
-        {
-          stats.map((stat) => (
-            <div class="stat">
-              <div class="num">{stat.num}</div>
-              <div class="label">{stat.label}</div>
+      <div class="section-head reveal">
+        <p class="eyebrow">The Record · Act Two</p>
+        <h2>25 years of search, engineering, and staying ahead of the curve.</h2>
+      </div>
+
+      <div class="timeline reveal">
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-year">1996–2000</span>
+            <span class="tl-act">The Start</span>
+          </div>
+          <div class="tl-body">
+            <h3 class="tl-title">Web tech at AT&T WorldNet</h3>
+            <p class="tl-desc">
+              Helped businesses build their first websites in Burbank before most people had
+              heard of a homepage. Earned a Certificate in Website Design from Glendale Career
+              College in 1996. Visitor counters included at no extra charge.
+            </p>
+            <div class="tl-tags">
+              <span class="tl-tag">AT&T WorldNet</span>
+              <span class="tl-tag">Glendale Career College</span>
             </div>
-          ))
-        }
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-year">2000–2005</span>
+            <span class="tl-act">The Platform</span>
+          </div>
+          <div class="tl-body">
+            <h3 class="tl-title">Sony Music & Webcastr.com</h3>
+            <p class="tl-desc">
+              Built a video content distribution platform for Sony Music artists at Webcastr.com
+              in West Hollywood — engineering and organic search practiced side by side from the
+              start, before anyone had a job title for it.
+            </p>
+            <div class="tl-tags">
+              <span class="tl-tag">Sony Music</span>
+              <span class="tl-tag">Web Development</span>
+              <span class="tl-tag">Organic Search</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-year">2005–2010</span>
+            <span class="tl-act">The Field</span>
+          </div>
+          <div class="tl-body">
+            <h3 class="tl-title">In-house SEO & digital marketing</h3>
+            <p class="tl-desc">
+              Led internet marketing and website management for Mr. Speedy Plumbing &amp; Rooter
+              in Los Angeles, achieving top Google Maps rankings for primary plumbing terms across
+              the city. Learned that rank at 2 AM is worth more than any agency retainer.
+            </p>
+            <div class="tl-tags">
+              <span class="tl-tag">Local SEO</span>
+              <span class="tl-tag">Google Maps</span>
+              <span class="tl-tag">Lead Generation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-year">2010</span>
+            <span class="tl-act">The Agency</span>
+          </div>
+          <div class="tl-body">
+            <h3 class="tl-title">Gobiya is founded in Los Angeles</h3>
+            <p class="tl-desc">
+              Founded to specialize in the intersection of technical web development and organic
+              search — recovering sites from algorithm updates, building custom React sites, and
+              managing paid media for businesses that need measurable results. Incorporated as
+              Gobiya LLC in 2012. BBB A+ rated.
+            </p>
+            <div class="tl-tags">
+              <span class="tl-tag">Technical SEO</span>
+              <span class="tl-tag">React Development</span>
+              <span class="tl-tag">Performance Marketing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <span class="tl-year">2011–2023</span>
+            <span class="tl-act">The Updates</span>
+          </div>
+          <div class="tl-body">
+            <h3 class="tl-title">Every algorithm cycle, inside live accounts</h3>
+            <p class="tl-desc">
+              Panda, Penguin, Hummingbird, Medic, BERT, the Helpful Content Update, and the 2024
+              core updates — each tracked inside active client accounts, not read about afterward
+              in a blog post. Documented recovery rate: 92%. Median time from diagnosis to
+              restored rankings: six weeks. URI paths analyzed in a single scan: 1.4 million.
+            </p>
+            <div class="tl-tags">
+              <span class="tl-tag">Recovery Forensics</span>
+              <span class="tl-tag">92% Recovery Rate</span>
+              <span class="tl-tag">1.4M URI Scans</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item tl-item--current">
+          <div class="tl-meta">
+            <span class="tl-year">2024 → now</span>
+            <span class="tl-act">The AI Era</span>
+          </div>
+          <div class="tl-body">
+            <h3 class="tl-title">Search becomes answers</h3>
+            <p class="tl-desc">
+              Google AI Overviews arrived in 2024 and began intercepting clicks from sites that
+              rank well but are invisible in AI-generated answers. Gobiya added GEO (Generative
+              Engine Optimization) — content and entity structure built to be cited by ChatGPT,
+              Perplexity, and Google AI Overviews. Your competitors are still updating their
+              meta descriptions.
+            </p>
+            <div class="tl-tags">
+              <span class="tl-tag">GEO / AI Citations</span>
+              <span class="tl-tag">Google AI Overviews</span>
+              <span class="tl-tag">Structured Data</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
+  <!-- Credentials card -->
   <section class="about">
     <div class="wrap">
       <Image
         src={profileImg}
-        alt="Steve Martin, SEO consultant, laughing under a spotlight"
+        alt="Steve Martin, SEO consultant and founder of Gobiya, Los Angeles"
         widths={[240, 480]}
         sizes="240px"
         class="headshot"
@@ -125,12 +291,41 @@ import profileImg from '../assets/steve-profile.webp';
       />
       <div>
         <p class="eyebrow" style="color: var(--text-inverse-muted);">The Short Version</p>
-        <h2>Small business SEO, done by one person who answers the phone.</h2>
-        <p>
-          Local search, AI visibility, technical fixes and websites that load fast. Month to
-          month. Plain English. Based wherever the Wi-Fi is, working with businesses that would
-          rather be busy than be marketed at.
-        </p>
+        <h2>One person. One name on the work. No delegation.</h2>
+        <div class="cred-grid">
+          <div class="cred-row">
+            <span class="cred-key">Founded</span>
+            <span class="cred-val">Est. 2010 · Gobiya LLC 2012 · Los Angeles, CA</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-key">Background</span>
+            <span class="cred-val">AT&T WorldNet (1996) · Sony Music / Webcastr.com (2000–2005) · SEO since 2005</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-key">Specialty</span>
+            <span class="cred-val">Algorithm recovery · Technical SEO · Local SEO · Google Ads · React dev · GEO for AI</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-key">Dev stack</span>
+            <span class="cred-val">React · Next.js · Vite · Tailwind · Supabase · WordPress</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-key">Languages</span>
+            <span class="cred-val">English · Spanish (bilingual)</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-key">Credentials</span>
+            <span class="cred-val">Google-certified (2015–2019) · <a href="https://www.bbb.org/us/ca/los-angeles/profile/digital-marketing/gobiya-llc-1216-495569" target="_blank" rel="noopener">BBB A+ rated</a> · Gobiya LLC</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-key">Paid media</span>
+            <span class="cred-val">Google Ads · Bing Ads · Meta Ads · Yelp Ads — up to $15K/month managed</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-key">LinkedIn</span>
+            <span class="cred-val"><a href="https://www.linkedin.com/in/stevemartingobiya/" target="_blank" rel="noopener">linkedin.com/in/stevemartingobiya</a></span>
+          </div>
+        </div>
         <div class="credit-line">
           Building websites since 1996 · Zero SNL appearances · One search result at a time
         </div>
@@ -138,6 +333,7 @@ import profileImg from '../assets/steve-profile.webp';
     </div>
   </section>
 
+  <!-- Hecklers FAQ -->
   <section class="playbill">
     <div class="wrap">
       <div class="section-head reveal">
@@ -166,3 +362,157 @@ import profileImg from '../assets/steve-profile.webp';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Hero credential pills */
+  .hero-creds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .cred-pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 2px solid var(--border);
+    box-shadow: 2px 2px 0 var(--border);
+    padding: 5px 10px;
+    color: var(--ink);
+    background: var(--bg);
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid var(--border);
+    margin-left: 8px;
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 24px;
+    padding: 0 0 36px 28px;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+  }
+  .tl-item--current::before {
+    background: var(--surface-dark);
+  }
+  @media (max-width: 640px) {
+    .timeline { margin-left: 0; border-left: none; }
+    .tl-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding-left: 0;
+      border-left: 3px solid var(--border);
+      padding-left: 18px;
+      margin-bottom: 4px;
+    }
+    .tl-item::before { display: none; }
+  }
+  .tl-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+  }
+  .tl-year {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+  }
+  .tl-act {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .tl-title {
+    font-size: 20px;
+    line-height: 1.05;
+    margin: 0 0 8px;
+  }
+  .tl-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+  .tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tl-tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    border: 1px solid var(--border-subtle);
+    padding: 3px 8px;
+    background: var(--bg-subtle);
+  }
+
+  /* Credentials grid in the dark about section */
+  .cred-grid {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 2px solid rgba(255,255,255,0.15);
+  }
+  .cred-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .cred-row:last-child { border-bottom: none; }
+  .cred-key {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-inverse-muted);
+    padding-top: 2px;
+  }
+  .cred-val {
+    color: rgba(255,255,255,0.88);
+  }
+  .cred-val a {
+    color: rgba(255,255,255,0.88);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .cred-val a:hover { color: #fff; }
+  @media (max-width: 480px) {
+    .cred-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+  }
+</style>
