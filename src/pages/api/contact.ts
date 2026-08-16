@@ -96,7 +96,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const htmlContent = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 2px solid #1a1a1a; background-color: #faf7f0; color: #1a1a1a;">
         <h2 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid #e5e0d3; padding-bottom: 12px; font-size: 20px;">
-          🎟️ New Booking Request — Wild &amp; Crazy SEO
+          🎟️ New Booking Request, Wild &amp; Crazy SEO
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px;">
           <tr>
@@ -128,7 +128,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     `;
 
     const textContent = `
-New Booking Request — Wild & Crazy SEO
+New Booking Request, Wild & Crazy SEO
 -------------------------------------
 Name: ${name}
 Business: ${business || 'None provided'}

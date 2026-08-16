@@ -38,7 +38,7 @@ export const marqueeItems = [
   'Reviews That Show Up',
 ];
 
-/** Homepage tiers — three tickets, as in the original playbill. */
+/** Homepage tiers: three tickets, as in the original playbill. */
 export const tiers = [
   {
     row: 'Row A · Starter',
@@ -67,7 +67,7 @@ export const tiers = [
     items: [
       'Everything in The Jerk',
       'Monthly content that answers real questions',
-      'AI search optimization — ChatGPT, Gemini, AI Overviews',
+      'AI search optimization: ChatGPT, Gemini, AI Overviews',
       'Review generation that does not feel like begging',
       'A dashboard you will look at twice and then trust',
     ],
@@ -85,12 +85,12 @@ export const tiers = [
       'Multi-location and service-area domination',
       'Competitor teardown, monthly',
       'Strategy calls where I actually answer the phone',
-      'Priority support — you text, I respond, like a person',
+      'Priority support: you text, I respond, like a person',
     ],
   },
 ];
 
-/** Services page — the full set list. */
+/** Services page: the full set list. */
 export const acts = [
   {
     no: 'Act I',
@@ -100,7 +100,7 @@ export const acts = [
       'The opening audit. I crawl your site and tell you, out loud, everything that is wrong with it. It is uncomfortable for about twenty minutes and then extremely useful forever.',
     items: [
       'Full technical crawl and indexation check',
-      'Core Web Vitals — the speed test you keep failing',
+      'Core Web Vitals: the speed test you keep failing',
       'On-page and metadata review',
       'Prioritized fix list, ranked by what actually moves money',
     ],
@@ -126,7 +126,7 @@ export const acts = [
       'Local SEO for businesses that need customers who can physically drive to them. The three-pack is the whole ballgame for local search, and most small businesses are not in it.',
     items: [
       'Google Business Profile optimization',
-      'Citation cleanup — every wrong phone number, hunted down',
+      'Citation cleanup: every wrong phone number, hunted down',
       'Review strategy that generates real reviews',
       'Location and service-area pages that do not read like spam',
     ],
@@ -138,7 +138,7 @@ export const acts = [
     body:
       'Your customers are asking ChatGPT, Gemini and AI Overviews for recommendations right now. Those answers name somebody. This is the work that makes it name you.',
     items: [
-      'AI crawler access — most sites accidentally block them',
+      'AI crawler access: most sites accidentally block them',
       'llms.txt and structured data so machines can read you',
       'Content written to be quotable, not just rankable',
       'Brand mention tracking across the major AI assistants',
@@ -152,7 +152,7 @@ export const acts = [
       'Someone in your town is outranking you with a worse business and a worse website. We find out exactly why, and then we take it.',
     items: [
       'Full competitor backlink and content teardown',
-      'Link gap analysis — what they have that you do not',
+      'Link gap analysis: what they have that you do not',
       'Ethical link building. Nothing that gets you penalized.',
       'Toxic link audit and disavow, if you inherited a mess',
     ],
@@ -193,7 +193,7 @@ export const acts = [
       'All acts, ongoing',
       'Monthly strategy calls with a human',
       'Quarterly competitive and AI visibility review',
-      'Priority access — you text, I respond',
+      'Priority access: you text, I respond',
     ],
   },
 ];

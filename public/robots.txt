@@ -1,4 +1,4 @@
-# Wild & Crazy SEO — robots.txt
+# Wild & Crazy SEO robots.txt
 # Everything is open. If you are reading this looking for a reason
 # your crawler got blocked, it was not us.
 

@@ -9,12 +9,19 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 
 const [latest, ...rest] = posts;
 
+// pubDate is a bare YYYY-MM-DD, so it parses as UTC midnight. Format in UTC too,
+// or every post renders a day early for anyone west of Greenwich.
 const fmt = (d: Date) =>
-  d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 ---
 
 <BaseLayout
-  title="The Green Room — SEO & AI Search Notes | Steve Martin"
+  title="The Green Room: SEO & AI Search Notes | Steve Martin"
   description="Backstage notes on SEO, AI search and small business websites. Plain English, no jargon, no 47-page PDFs with a red gauge on the front."
 >
   <section class="hero">

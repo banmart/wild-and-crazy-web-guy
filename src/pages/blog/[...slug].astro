@@ -11,8 +11,15 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 
+// pubDate is a bare YYYY-MM-DD, so it parses as UTC midnight. Format in UTC too,
+// or every post renders a day early for anyone west of Greenwich.
 const fmt = (d: Date) =>
-  d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
@@ -62,7 +69,7 @@ const schema = {
   ],
 };
 
-// Only h2s — h3s make the bill too long.
+// Only h2s; h3s make the bill too long.
 const toc = headings.filter((h) => h.depth === 2);
 ---
 
@@ -116,7 +123,7 @@ const toc = headings.filter((h) => h.depth === 2);
               <p class="eyebrow">Encore</p>
               <p>
                 Want a second opinion on an audit somebody already sent you? I will read it and
-                tell you which parts are real — free, and it will not take 47 pages.
+                tell you which parts are real. Free, and it will not take 47 pages.
               </p>
               <a href="/contact" class="ticket-btn small">Send Me Your Audit →</a>
             </div>

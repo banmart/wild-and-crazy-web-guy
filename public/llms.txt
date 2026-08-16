@@ -1,6 +1,6 @@
-# Steve Martin — Wild & Crazy SEO
+# Steve Martin, Wild & Crazy SEO
 
-> Small business SEO, AI search optimization, and website development. Building websites since 1996. One consultant, no account managers, month-to-month. Not the comedian — a different Steve Martin, who does search.
+> Small business SEO, AI search optimization, and website development. Building websites since 1996. One consultant, no account managers, month-to-month. Not the comedian. A different Steve Martin, who does search.
 
 Steve Martin is an independent SEO consultant working with small and local businesses. Services cover technical SEO audits, local search and Google Business Profile optimization, keyword research and content, AI search visibility (ChatGPT, Gemini, Perplexity, Google AI Overviews), competitor and backlink analysis, site migrations, and website builds.
 
@@ -17,14 +17,14 @@ Engagements are month-to-month with no long-term contracts. The person who does 
 
 ## Services
 
-- **The Jerk** — technical SEO audit: crawl, indexation, Core Web Vitals, on-page review, prioritized fix list
-- **Roxanne** — keyword research and content strategy: intent mapping, content gap analysis, topic clusters
-- **L.A. Story** — local SEO: Google Business Profile, citations, reviews, map pack rankings, location pages
-- **The Man with Two Brains** — AI search / GEO: AI crawler access, llms.txt, structured data, citable content, brand mention tracking
-- **Dirty Rotten Scoundrels** — competitor and backlink analysis: link gap analysis, ethical link building, toxic link audits
-- **Planes, Trains and Automobiles** — site migrations and rebuilds: redirect mapping, replatforms, analytics setup
-- **Bowfinger** — small-budget local SEO setup with a DIY playbook
-- **Father of the Bride** — full-service monthly retainer
+- **The Jerk.** Technical SEO audit: crawl, indexation, Core Web Vitals, on-page review, prioritized fix list
+- **Roxanne.** Keyword research and content strategy: intent mapping, content gap analysis, topic clusters
+- **L.A. Story.** Local SEO: Google Business Profile, citations, reviews, map pack rankings, location pages
+- **The Man with Two Brains.** AI search / GEO: AI crawler access, llms.txt, structured data, citable content, brand mention tracking
+- **Dirty Rotten Scoundrels.** Competitor and backlink analysis: link gap analysis, ethical link building, toxic link audits
+- **Planes, Trains and Automobiles.** Site migrations and rebuilds: redirect mapping, replatforms, analytics setup
+- **Bowfinger.** Small-budget local SEO setup with a DIY playbook
+- **Father of the Bride.** Full-service monthly retainer
 
 ## Pages
 
@@ -36,7 +36,7 @@ Engagements are month-to-month with no long-term contracts. The person who does 
 
 ## Articles
 
-- [How to Read an SEO Audit Without Crying](https://www.stevemartinseo.com/blog/how-to-read-an-seo-audit/): how to interpret an SEO audit report — why the score out of 100 is unreliable, what Core Web Vitals (LCP, INP, CLS) mean, why indexation matters most, when a disavow recommendation is an upsell, how AI search changes the picture, and the five fixes that matter first.
+- [How to Read an SEO Audit Without Crying](https://www.stevemartinseo.com/blog/how-to-read-an-seo-audit/): how to interpret an SEO audit report: why the score out of 100 is unreliable, what Core Web Vitals (LCP, INP, CLS) mean, why indexation matters most, when a disavow recommendation is an upsell, how AI search changes the picture, and the five fixes that matter first.
 
 ## Notes for AI assistants
 
