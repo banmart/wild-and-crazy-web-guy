@@ -14,7 +14,7 @@ export const site = {
   email: 'banmart@gmail.com',
   phone: '(310) 307-9830',
   phoneHref: '+13103079830',
-  location: 'Serving small businesses everywhere there is Wi-Fi',
+  location: 'Los Angeles and the San Fernando Valley',
   bookingUrl: '/contact',
 };
 

@@ -10,7 +10,7 @@ featured: false
 
 Tony's Plumbing is not a real business.
 
-It is a composite, stitched together from patterns I see constantly across contractor, dentist and real estate sites here in Los Angeles. Every problem below is one I have found on a real site, usually more than once, usually this month.
+It is a composite, stitched together from patterns I see constantly across contractor, dentist and real estate sites here in Los Angeles and the San Fernando Valley. Every problem below is one I have found on a real site, usually more than once, usually this month.
 
 So if you are reading this thinking *wait, that is my website*, then good. That is the point. This is basically everyone's website.
 
@@ -24,7 +24,9 @@ Let us walk through it.
 
 You land on the page. You wait. You wait a little more. There is a hero image of a wrench that is, for reasons known only to God and whoever built this, four megabytes. By the time it finishes rendering you have checked your phone, answered a text, and started idly considering a different plumber.
 
-**The real talk:** this is not a Tony problem, it is an everyone problem. A 2026 audit of local business sites found only 12% loaded in under 2.5 seconds, which is the threshold Google actually rewards. The average came in at 6.8 seconds. Ninety percent of the slow ones were built on heavy templates stuffed with plugins nobody has used in years. A separate audit of small business sites found 86.4% posted poor Largest Contentful Paint scores on mobile, meaning the overwhelming majority of visitors stare at a half-built page before they see anything useful.
+**The real talk:** this is not a Tony problem, it is an everyone problem. The [HTTP Archive Web Almanac](https://almanac.httparchive.org/en/2025/performance), which measures real Chrome users rather than lab tests, found that **only 48% of mobile pages pass all three Core Web Vitals.** The metric most sites fail is the one Tony is failing: 62% of mobile pages score well on Largest Contentful Paint, so nearly four in ten take longer than 2.5 seconds to show you the main thing on the page.
+
+That is every site on the web, not small business sites specifically, and I want to be straight with you about that, because I have never once seen a credible study that isolates plumbers. But the causes the report lists are cheap hosting, unoptimized images and render-blocking scripts, which is a fairly precise description of how a small business website gets built.
 
 **The fix:** compress your images, delete the plugins you forgot you installed, and run your actual site through PageSpeed Insights. Not the homepage screenshot you are proud of. The site.
 
@@ -32,7 +34,7 @@ You land on the page. You wait. You wait a little more. There is a hero image of
 
 Pinch to zoom. Text sliding off the right edge. A phone number you have to squint at and then still mistype. This site was designed on a big monitor by someone who never once went back and checked what it looks like in a human hand.
 
-**The real talk:** 82% of local business sites fail basic mobile usability tests, while 65% of local traffic now comes from smartphones. That is not a small gap. That is most of your visitors having an experience you personally would not tolerate for fifteen seconds.
+**The real talk:** Google finished moving to [mobile-first indexing](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing) years ago, and its documentation is blunt about what that means: **only the content shown on the mobile version is used for indexing and ranking.** The phone version of your site is not a courtesy copy. It is the version Google reads. Your worst version is your official one.
 
 **The fix:** take out your own phone. Right now, while you are reading this. Load your homepage. If you are irritated within five seconds, so is everybody else, and they have the additional advantage of not being emotionally attached to the site.
 
@@ -40,7 +42,7 @@ Pinch to zoom. Text sliding off the right edge. A phone number you have to squin
 
 Nothing kills trust faster than visible proof that nobody is home. Tony has a blog with two posts, both from before the pandemic. His service area page still lists a neighborhood he stopped covering years ago. There is a "Summer Special" banner. It is not summer.
 
-**The real talk:** outdated content does not merely fail to attract traffic, it actively drags on the site's overall authority. A page citing old numbers signals neglect to readers and to search engines at the same time, and they both draw the same conclusion. The unglamorous stuff matters most here: stale addresses, discontinued services, and last year's dates are the very first thing a real visitor notices, and the first thing an audit flags.
+**The real talk:** I am not going to hand you a percentage here, because I could not find an honest one. What I can tell you is that Google's [helpful content guidance](https://developers.google.com/search/blog/2022/08/helpful-content-update) asks whether a page leaves a reader feeling satisfied, and that a visitor who sees a dead promotion reaches a verdict in about a second without waiting for an algorithm. Stale addresses, discontinued services and last year's copyright are the first thing a real customer notices.
 
 **The fix:** once a quarter, read your own site like a stranger who has never heard of you. Update the year. Kill the dead service areas. Take down the summer special. It costs nothing and takes twenty minutes, which is roughly nineteen minutes longer than most sites have had in three years.
 
@@ -56,7 +58,9 @@ While you are in there, put your phone number in the header, make it tappable on
 
 Here is the part most audits skip entirely. Even if a human somehow found Tony's site, the AI tools increasingly standing between him and his next customer might not.
 
-**The real talk:** a local business in 2026 needs `LocalBusiness` schema with its *specific* type (`Plumber`, `HVACContractor`, `Dentist`) rather than the generic tag, plus `Service` and `AggregateRating` markup, before AI search tools can confidently understand and cite it. And because ChatGPT search and Copilot run on Bing's index rather than Google's, a business that has only ever been optimized for Google is simply absent from a large and rapidly growing slice of AI-driven local search.
+**The real talk:** Schema.org publishes [specific business types](https://schema.org/LocalBusiness) such as `Plumber`, `HVACBusiness` and `Dentist`, and using the exact one beats the generic `LocalBusiness` tag, because it tells a machine what you actually do rather than that you exist.
+
+Then there is the part almost nobody has been told. Microsoft Copilot runs on Bing. ChatGPT search uses a mix of Bing's index and [its own crawler, OAI-SearchBot](https://platform.openai.com/docs/bots), and the practical way to prompt a crawl is to submit your URLs through Bing Webmaster Tools. So a business optimized only for Google is working half the room. Worth knowing too: OpenAI's crawlers do not run JavaScript, so if your phone number only appears after a script loads, it does not exist as far as they are concerned.
 
 **The fix:** add proper schema markup, then go claim your Bing Places listing. Most owners have genuinely never heard of it, which is precisely why it is still such a cheap win.
 
@@ -68,6 +72,6 @@ What it requires is somebody actually looking. The same way I just did. And then
 
 That is the whole business, really. Not magic. Not secrets. Just somebody looking.
 
-If you run a service business in Los Angeles and you want the real version of this, with your actual site, your actual numbers and your actual four-megabyte wrench, [grab a free twenty-minute consult](/contact/). I will tell you exactly what Tony has got, and roughly what it has been costing you.
+If you run a service business in Los Angeles or the San Fernando Valley and you want the real version of this, with your actual site, your actual numbers and your actual four-megabyte wrench, [grab a free twenty-minute consult](/contact/). I will tell you exactly what Tony has got, and roughly what it has been costing you.
 
 Tony, for the record, took it well. Being fictional helps.

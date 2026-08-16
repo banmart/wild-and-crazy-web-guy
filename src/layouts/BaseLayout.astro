@@ -59,7 +59,10 @@ const schema = schemaOverride ?? {
   email: site.email,
   priceRange: '$$',
   foundingDate: '1996',
-  areaServed: { '@type': 'Country', name: 'United States' },
+  areaServed: [
+    { '@type': 'City', name: 'Los Angeles', addressRegion: 'CA' },
+    { '@type': 'Place', name: 'San Fernando Valley' },
+  ],
   serviceType: [
     'Search Engine Optimization',
     'Local SEO',

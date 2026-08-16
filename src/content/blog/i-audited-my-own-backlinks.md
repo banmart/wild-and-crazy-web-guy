@@ -35,7 +35,7 @@ Next came the `.shop` cluster. Ten domains (`rankchest.shop`, `googleseopoint.sh
 
 The URLs on these pages begin with random hex strings. `dcf6245b8-`. `4c5769cbd-`. That is the tell. Nobody writes a case study and then names the file `878781c42`. That is a machine generating pages at volume, and the hex string is just an index so it does not collide with itself.
 
-I build websites for general contractors. I remodel bathrooms, digitally speaking. According to these pages I have transformed the search visibility of the healthcare, pharmaceutical, YMYL, hospitality, financial advisory and legal sectors. Simultaneously. Over eighteen months. With full data transparency.
+I build websites for general contractors around Los Angeles and the San Fernando Valley. I remodel bathrooms, digitally speaking. According to these pages I have transformed the search visibility of the healthcare, pharmaceutical, YMYL, hospitality, financial advisory and legal sectors. Simultaneously. Over eighteen months. With full data transparency.
 
 ## The part where it got slightly less funny
 
@@ -85,4 +85,4 @@ If you just ran your own audit and panicked:
 4. **Do not disavow to feel productive.** It is a scalpel for a specific condition, not a broom.
 5. **Go earn a real link.** Boring. Slow. The only thing on this list that actually changes your rankings.
 
-I build and optimize websites for contractors and local businesses. My own backlink profile is a work in progress, as established above at some length. If you would like a second opinion on yours, including whether that alarming export actually means anything, [get in touch](/contact/).
+I build and optimize websites for contractors and local businesses across Los Angeles and the San Fernando Valley. My own backlink profile is a work in progress, as established above at some length. If you would like a second opinion on yours, including whether that alarming export actually means anything, [get in touch](/contact/).
