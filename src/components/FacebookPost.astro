@@ -1,0 +1,96 @@
+---
+// Standalone Facebook post embed. The plugin is fluid and fills whatever frame
+// it is given, so the wrapper caps the reading width and the iframe fills it.
+const postEmbedSrc =
+  'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid06fT6pE2NLUsqqTSSaGWYgdygaDQC7bq1SdjnEUh9mU5aUBhHwz6eNw2xHCH53Sdrl%26id%3D61593616880794&show_text=true&width=500';
+
+const pageUrl = 'https://www.facebook.com/profile.php?id=61593616880794';
+---
+
+<section class="fb-section" id="from-the-feed">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Straight From The Feed</p>
+      <h2>The material does not stop at the website.</h2>
+      <p>
+        Most of the jokes start on Facebook, where they are cheaper to test. The good ones
+        end up in a pitch deck. The bad ones end up here anyway.
+      </p>
+    </div>
+
+    <div class="fb-embed-wrap reveal">
+      <div class="fb-embed">
+        <iframe
+          src={postEmbedSrc}
+          title="Facebook post from Steve Martin"
+          width="500"
+          height="493"
+          loading="lazy"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+
+      <a href={pageUrl} class="fb-follow" target="_blank" rel="noopener noreferrer">
+        Follow Along On Facebook →
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fb-section {
+    padding: 48px 0;
+    background: var(--bg-subtle);
+    border-bottom: 2px solid var(--border);
+  }
+
+  @media (min-width: 768px) {
+    .fb-section {
+      padding: 68px 0;
+    }
+  }
+
+  .fb-embed-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .fb-embed {
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow-brutal);
+    background: var(--bg);
+    overflow: hidden;
+    /* Kill the inline-frame baseline gap under the iframe. */
+    line-height: 0;
+  }
+
+  .fb-embed iframe {
+    display: block;
+    width: 100%;
+    height: 493px;
+    border: none;
+  }
+
+  .fb-follow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 2px;
+  }
+
+  .fb-follow:hover {
+    color: var(--ink-soft);
+  }
+</style>
