@@ -1,0 +1,179 @@
+---
+import { bits } from '../data/site';
+
+// Only the newest bit runs on the homepage. The rest of the set stays in the
+// data file until there is a dedicated bits archive worth building.
+const bit = bits[0];
+---
+
+<section class="bit-section" id="latest-bit">
+  <div class="wrap">
+    <article class="bit-board reveal">
+      <div class="bit-top-tag">
+        <span class="bit-label">★ Tonight Only · The Latest Bit</span>
+        <span class="bit-date">{bit.date}</span>
+      </div>
+
+      <div class="bit-body">
+        <span class="bit-mic" aria-hidden="true">🎤</span>
+        <blockquote class="bit-quote">
+          <span class="bit-setup">{bit.setup}</span>
+          <span class="bit-punchline">{bit.punchline}</span>
+          <span class="bit-tag" aria-hidden="true">{bit.tag}</span>
+        </blockquote>
+      </div>
+
+      <div class="bit-footer">
+        <span class="bit-footnote">{bit.footnote}</span>
+        <a href="/contact" class="bit-link">Get The Real Quote →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .bit-section {
+    padding: 48px 0;
+    background: var(--surface-dark);
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+  }
+
+  @media (min-width: 768px) {
+    .bit-section {
+      padding: 68px 0;
+    }
+  }
+
+  .bit-board {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow-white);
+  }
+
+  /* Marquee header bar */
+  .bit-top-tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 18px;
+    background: var(--surface-dark);
+    border-bottom: 2px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .bit-label {
+    color: var(--text-inverse);
+  }
+
+  .bit-date {
+    color: var(--text-inverse-muted);
+  }
+
+  .bit-body {
+    display: flex;
+    gap: 16px;
+    padding: 26px 20px 24px;
+  }
+
+  @media (min-width: 768px) {
+    .bit-body {
+      gap: 24px;
+      padding: 40px 36px 36px;
+    }
+  }
+
+  .bit-mic {
+    font-size: 30px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .bit-mic {
+      font-size: 42px;
+    }
+  }
+
+  .bit-quote {
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .bit-setup,
+  .bit-punchline {
+    display: block;
+  }
+
+  .bit-setup {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 3.4vw, 28px);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+  }
+
+  .bit-punchline {
+    font-family: var(--font-heading);
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: 0.005em;
+    color: var(--ink);
+  }
+
+  .bit-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .bit-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 20px;
+    border-top: 2px solid var(--border);
+    background: var(--bg-subtle);
+  }
+
+  @media (min-width: 768px) {
+    .bit-footer {
+      padding: 14px 36px;
+    }
+  }
+
+  .bit-footnote {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+  }
+
+  .bit-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 2px;
+    white-space: nowrap;
+  }
+
+  .bit-link:hover {
+    color: var(--ink-soft);
+  }
+</style>

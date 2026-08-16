@@ -251,6 +251,21 @@ export const hecklers = [
   },
 ];
 
+/**
+ * The homepage bit board. Newest bit goes first; the homepage only shows
+ * bits[0], so adding a new one at the top is the whole publishing workflow.
+ */
+export const bits = [
+  {
+    date: 'August 2026',
+    setup: "People ask me, 'Steve, what's SEO cost these days?'",
+    punchline:
+      "TWO-FIVE TO FIVE THOUSAND A MONTH, baby, that's the going rate! And you know what AI did to that price? KNOCKED IT DOWN 20 to 30%! That's right, the robots are out here doing you a FAVOR for once!",
+    tag: '🤖💰',
+    footnote: 'Real number, real discount. Ask me what your town actually costs.',
+  },
+];
+
 /** The Wild & Crazy Special Offer: Free essentials with new website builds */
 export const wildOffer = {
   eyebrow: '✦ Special Feature Attraction · Wild & Crazy Value ✦',

@@ -1,10 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TicketCard from '../components/TicketCard.astro';
+// import TicketCard from '../components/TicketCard.astro'; // Playbill section hidden
 import Marquee from '../components/Marquee.astro';
 import WildOffer from '../components/WildOffer.astro';
-import { tiers, quotes, stats, hecklers, site } from '../data/site';
+import LatestBit from '../components/LatestBit.astro';
+import { quotes, stats, hecklers, site } from '../data/site';
 import stageImg from '../assets/stage-seo-audit.webp';
 import profileImg from '../assets/steve-profile.webp';
 
@@ -118,6 +119,9 @@ const schema = {
     </div>
   </section>
 
+  <!-- ================= LATEST BIT ================= -->
+  <LatestBit />
+
   <!-- ================= THE PROBLEM ================= -->
   <section class="playbill">
     <div class="wrap">
@@ -146,7 +150,11 @@ const schema = {
 
   <Marquee />
 
-  <!-- ================= PLAYBILL / TIERS ================= -->
+  {
+    /* ================= PLAYBILL / TIERS (hidden on the homepage) =================
+    Pricing tiers still live on /services. Uncomment this block, plus the
+    TicketCard and tiers imports above, to bring them back to the homepage.
+
   <section class="playbill" id="playbill">
     <div class="wrap">
       <div class="section-head reveal">
@@ -164,6 +172,8 @@ const schema = {
       </div>
     </div>
   </section>
+  ============================================================================ */
+  }
 
   <!-- ================= WILD & CRAZY SPECIAL OFFER ================= -->
   <WildOffer />
