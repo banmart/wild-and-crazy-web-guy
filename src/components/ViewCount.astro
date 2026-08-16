@@ -1,0 +1,108 @@
+---
+/**
+ * Eye icon plus a view count.
+ *
+ * Blog pages are prerendered, so the number cannot be baked in at build time.
+ * It is fetched client-side and revealed once it arrives, which keeps the pages
+ * static and fast. With JavaScript off, nothing renders at all, which beats
+ * showing a permanent "0".
+ */
+interface Props {
+  slug: string;
+  /** Set on the article page itself, so the visit is recorded. Cards only read. */
+  record?: boolean;
+}
+
+const { slug, record = false } = Astro.props;
+---
+
+<span class="view-count" data-views-slug={slug} data-views-record={record ? '' : undefined} hidden>
+  <svg
+    class="view-count-icon"
+    viewBox="0 0 24 24"
+    width="14"
+    height="14"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+    <circle cx="12" cy="12" r="3"></circle>
+  </svg>
+  <span class="view-count-num" aria-hidden="true"></span>
+</span>
+
+<script>
+  const els = document.querySelectorAll<HTMLElement>('[data-views-slug]');
+  if (els.length > 0) {
+    const show = (el: HTMLElement, n: number) => {
+      el.querySelector('.view-count-num')!.textContent = n.toLocaleString();
+      // The icon and digits are decorative; screen readers get the whole phrase,
+      // pluralized, from the label instead of hearing "1 views".
+      el.setAttribute('aria-label', `${n.toLocaleString()} ${n === 1 ? 'view' : 'views'}`);
+      el.hidden = false;
+    };
+
+    const counting = Array.from(els).filter((el) => el.dataset.viewsRecord !== undefined);
+    const reading = Array.from(els).filter((el) => el.dataset.viewsRecord === undefined);
+
+    // Record at most one view per article per tab session, so a refresh does
+    // not inflate the number.
+    for (const el of counting) {
+      const slug = el.dataset.viewsSlug!;
+      const key = `viewed:${slug}`;
+
+      if (sessionStorage.getItem(key)) {
+        reading.push(el);
+        continue;
+      }
+
+      fetch('/api/views', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug }),
+      })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then(({ views }) => {
+          sessionStorage.setItem(key, '1');
+          show(el, views);
+        })
+        .catch(() => {
+          /* Counter is decoration. Leave it hidden rather than show an error. */
+        });
+    }
+
+    if (reading.length > 0) {
+      const slugs = [...new Set(reading.map((el) => el.dataset.viewsSlug!))];
+
+      fetch(`/api/views?slugs=${encodeURIComponent(slugs.join(','))}`)
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then(({ views }) => {
+          for (const el of reading) {
+            const n = views[el.dataset.viewsSlug!];
+            if (typeof n === 'number' && n > 0) show(el, n);
+          }
+        })
+        .catch(() => {});
+    }
+  }
+</script>
+
+<style>
+  .view-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .view-count[hidden] {
+    display: none;
+  }
+  .view-count-icon {
+    /* Nudge the icon onto the baseline of the mono type beside it. */
+    margin-top: -1px;
+    opacity: 0.75;
+  }
+</style>

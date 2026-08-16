@@ -1,5 +1,5 @@
 /* ============================================================
-   WILD & CRAZY SEO — global stylesheet
+   WILD & CRAZY SEO global stylesheet
    Theme carried over from the original playbill concept.
    ============================================================ */
 
@@ -330,7 +330,7 @@ a {
   margin-bottom: 18px;
 }
 .hero h1 {
-  /* Sized so "Steve Martin." stays on one line in the hero column — the joke
+  /* Sized so "Steve Martin." stays on one line in the hero column, since the joke
      lands worse when the name wraps. */
   font-size: clamp(38px, 4.9vw, 60px);
   line-height: 1;

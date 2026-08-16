@@ -24,3 +24,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+
+# Local dev view counts (Upstash is used in production)
+.views.local.json

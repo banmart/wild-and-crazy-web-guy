@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ViewCount from '../../components/ViewCount.astro';
 import { site } from '../../data/site';
 
 export async function getStaticPaths() {
@@ -94,6 +95,7 @@ const toc = headings.filter((h) => h.depth === 2);
           <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
           <span aria-hidden="true">·</span>
           <span>{post.data.readingTime}</span>
+          <ViewCount slug={post.id} record />
         </div>
       </div>
     </section>
