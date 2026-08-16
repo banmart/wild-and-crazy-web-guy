@@ -184,6 +184,17 @@ const schema = schemaOverride ?? {
         resizeTimer = window.setTimeout(fillAll, 150);
       });
 
+      // External links open in a new tab. Hand-written markup already sets
+      // target/rel; this is the safety net for links that come out of blog
+      // markdown, where Astro's Markdown processor gives us no hook to do it
+      // at build time. Anything on this host, plus mailto/tel, stays put.
+      document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
+        if (link.target || link.hostname === window.location.hostname) return;
+        if (!/^https?:$/.test(link.protocol)) return;
+        link.target = '_blank';
+        link.rel = link.rel ? `${link.rel} noopener noreferrer` : 'noopener noreferrer';
+      });
+
       // Scroll reveal
       const revealables = document.querySelectorAll('.reveal');
       if (prefersReduced || !('IntersectionObserver' in window)) {
