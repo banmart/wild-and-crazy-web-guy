@@ -8,6 +8,7 @@ const year = new Date().getFullYear();
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>
       {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/privacy">Privacy Policy</a>
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </nav>
 
