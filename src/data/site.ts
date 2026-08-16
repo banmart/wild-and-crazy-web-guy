@@ -245,4 +245,74 @@ export const hecklers = [
     q: 'Do you do contracts?',
     a: 'Month to month. If the work is good you will stay, and if it is not you should absolutely leave. Locking clients into twelve months is a business model for people whose work does not survive month three.',
   },
+  {
+    q: 'Is the "Wild & Crazy" free hosting and CRM offer actually real?',
+    a: '100% real. When you commission a new website development and design with me, I include the custom domain, cloud hosting, SSL padlock, CRM leads database, email campaign setup, and full SEO optimization for free. A site without hosting is just a folder on my laptop, and a site without SEO is a billboard in an abandoned mine shaft. It should all work together out of the box.',
+  },
 ];
+
+/** The Wild & Crazy Special Offer: Free essentials with new website builds */
+export const wildOffer = {
+  eyebrow: '✦ Special Feature Attraction · Wild & Crazy Value ✦',
+  title: 'FREE with New Website Development & Design',
+  subtitle:
+    'Two wild and crazy guys walked into a server farm... and decided to give away the entire digital infrastructure on the house. Order any new website build, and I will throw in all the expensive digital plumbing below completely FREE.',
+  accountantNote: '(My business manager is currently hyperventilating in the green room.)',
+  items: [
+    {
+      title: 'Free Domain Name',
+      tagline: 'YourBusiness.com — unless a guy in Boise bought it in 1999.',
+      description:
+        'We hunt down, register, and wire up your custom dot-com domain so you can finally stop sending six-figure client proposals from a free Yahoo address.',
+      badge: 'FREE DOT-COM',
+      icon: '🌐',
+    },
+    {
+      title: 'Free Cloud Web Hosting',
+      tagline: 'Cloud hosting so fast it violates local traffic ordinances.',
+      description:
+        'High-performance, ultra-fast cloud hosting with 99.9% uptime. Your pages load in milliseconds so visitors don’t leave before seeing your phone number.',
+      badge: 'CLOUD SPEED',
+      icon: '⚡',
+    },
+    {
+      title: 'Free SSL Certificate',
+      tagline: 'The little green padlock that proves you’re not operating out of an alley.',
+      description:
+        'Bank-grade HTTPS encryption configured out of the box, stopping Google Chrome from plastering a terrifying red “HAZARDOUS SITE” warning over your brand.',
+      badge: 'BANK-GRADE LOCK',
+      icon: '🔒',
+    },
+    {
+      title: 'Free CRM (Leads Database)',
+      tagline: 'Because writing client phone numbers on cocktail napkins is not a sales funnel.',
+      description:
+        'Every quote request, contact submission, and consultation booking is automatically collected in a clean, searchable lead dashboard that reminds you who to call.',
+      badge: 'LEADS DATABASE',
+      icon: '📋',
+    },
+    {
+      title: 'Free Email Campaigns',
+      tagline: 'Newsletters people actually open instead of filing straight into the incinerator.',
+      description:
+        'Pre-configured broadcast tools and automated email welcome sequences ready to convert casual visitors into repeat paying clients on autopilot.',
+      badge: 'INBOX READY',
+      icon: '✉️',
+    },
+    {
+      title: 'Optimized for SEO',
+      tagline: 'Because a gorgeous website nobody can find is just expensive modern art.',
+      description:
+        'Engineered from line one with semantic HTML, local schema markup, Core Web Vitals speed tuning, and AI crawler readiness so Google and ChatGPT cite you first.',
+      badge: 'GOOGLE & AI READY',
+      icon: '🚀',
+    },
+  ],
+  marketValue: '$1,200+/yr',
+  yourPrice: '$0.00',
+  ctaText: 'Claim The Wild & Crazy Offer →',
+  ctaHref: '/contact',
+  disclaimer:
+    '* No hidden setup surcharges. No surprise renewal ransom. No 14-page contracts written in Latin. If you find a wilder or crazier web package in this town, I will personally apologize to your dog.',
+};
+

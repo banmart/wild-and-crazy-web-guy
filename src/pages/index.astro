@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TicketCard from '../components/TicketCard.astro';
 import Marquee from '../components/Marquee.astro';
+import WildOffer from '../components/WildOffer.astro';
 import { tiers, quotes, stats, hecklers, site } from '../data/site';
 import stageImg from '../assets/stage-seo-audit.webp';
 import profileImg from '../assets/steve-profile.webp';
@@ -163,6 +164,9 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <!-- ================= WILD & CRAZY SPECIAL OFFER ================= -->
+  <WildOffer />
 
   <div class="bulb-strip dark" aria-hidden="true"></div>
 
