@@ -112,9 +112,9 @@ const fmt = (d: Date) =>
   .headliner {
     display: block;
     text-decoration: none;
-    background: var(--paper-light);
-    border: 2px solid var(--burgundy);
-    box-shadow: 8px 8px 0 var(--burgundy);
+    background: var(--bg);
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow-brutal-lg);
     transition:
       transform 0.14s ease,
       box-shadow 0.14s ease;
@@ -122,35 +122,37 @@ const fmt = (d: Date) =>
   .headliner:hover,
   .headliner:focus-visible {
     transform: translate(-3px, -3px);
-    box-shadow: 11px 11px 0 var(--burgundy);
+    box-shadow: 10px 10px 0 var(--border);
     outline: none;
   }
   .headliner-stub {
-    background: var(--burgundy);
+    background: var(--surface-dark);
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding: 14px 26px;
-    font-family: 'Space Mono', monospace;
-    font-size: 10.5px;
+    padding: 14px 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gold-light);
+    color: var(--text-inverse);
   }
   .headliner-body {
-    padding: 34px 30px 30px;
+    padding: 28px 24px 26px;
   }
   .headliner-body h2 {
-    font-size: clamp(26px, 3.6vw, 40px);
-    line-height: 1.06;
-    color: var(--burgundy);
-    max-width: 20ch;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 0.95;
+    color: var(--ink);
+    max-width: 24ch;
   }
   .headliner-body .lede {
-    margin-top: 16px;
-    font-size: 17.5px;
+    margin-top: 14px;
+    font-size: 16.5px;
     color: var(--ink-soft);
     max-width: 62ch;
+    line-height: 1.55;
   }
 
   .post-card {
@@ -162,25 +164,26 @@ const fmt = (d: Date) =>
   .post-card:hover,
   .post-card:focus-visible {
     transform: translate(-3px, -3px);
-    box-shadow: 9px 9px 0 var(--line);
+    box-shadow: var(--shadow-brutal-hover);
     outline: none;
   }
 
   .post-meta {
-    margin-top: 22px;
-    padding-top: 16px;
-    border-top: 1px dashed var(--line);
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-subtle);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    font-family: 'Space Mono', monospace;
-    font-size: 10.5px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--ink-muted);
   }
   .read-on {
-    color: var(--burgundy);
+    color: var(--ink);
   }
 </style>

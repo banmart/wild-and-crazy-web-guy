@@ -13,16 +13,16 @@ const isCurrent = (href: string) => path === href || path === `${href}/`;
       <Image
         src={logoImg}
         alt=""
-        width={44}
-        height={44}
+        width={38}
+        height={38}
         loading="eager"
         class="logo-mark"
         aria-hidden="true"
       />
-      <span class="wordmark-text">
-        STEVE <span>MARTIN</span>
-        <small>Wild &amp; Crazy SEO</small>
-      </span>
+      <div class="wordmark-text">
+        <span class="wordmark-title">STEVE MARTIN</span>
+        <small>WILD &amp; CRAZY SEO</small>
+      </div>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
@@ -35,21 +35,59 @@ const isCurrent = (href: string) => path === href || path === `${href}/`;
       }
     </nav>
 
-    <a href={site.bookingUrl} class="ticket-btn small">Book Now</a>
+    <div class="topbar-actions">
+      <a href={site.bookingUrl} class="ticket-btn small">Book Free Consult →</a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
-      Menu
-    </button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="dot-matrix" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </span>
+        <span class="toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 
   <nav class="mobile-nav" id="mobile-nav" data-open="false" aria-label="Mobile">
     {
       nav.map((item) => (
         <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-          {item.label}
+          <span>{item.label}</span>
+          <span class="arrow" aria-hidden="true">→</span>
         </a>
       ))
     }
-    <a href={site.bookingUrl} style="color: var(--burgundy);">Book Now →</a>
+    <a href={site.bookingUrl} class="mobile-cta">
+      <span>Book Free Consult</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
   </nav>
 </header>
+
+<style>
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (max-width: 820px) {
+    .nav-toggle {
+      display: inline-flex;
+    }
+  }
+
+  .mobile-cta {
+    background: var(--surface-dark);
+    color: var(--text-inverse) !important;
+    padding: 14px 12px !important;
+    margin-top: 10px;
+  }
+</style>

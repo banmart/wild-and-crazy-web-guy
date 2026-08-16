@@ -260,21 +260,22 @@ const schema = {
 
 <style>
   .meta-date {
-    margin-top: 24px;
-    font-family: 'Space Mono', monospace;
+    margin-top: 20px;
+    font-family: var(--font-mono);
     font-size: 11px;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--ink-muted);
   }
   .meta-date strong {
-    color: var(--burgundy);
+    color: var(--ink);
   }
 
   .policy-grid {
     display: grid;
     grid-template-columns: 220px 1fr;
-    gap: 56px;
+    gap: 48px;
     align-items: start;
   }
   @media (max-width: 900px) {
@@ -286,26 +287,26 @@ const schema = {
 
   .toc {
     position: sticky;
-    top: 110px;
-    border-left: 2px solid var(--burgundy);
-    padding-left: 18px;
+    top: 90px;
+    border-left: 2px solid var(--border);
+    padding-left: 16px;
   }
   @media (max-width: 900px) {
     .toc {
       position: static;
-      background: var(--paper-light);
-      border: 2px solid var(--ink);
-      box-shadow: 5px 5px 0 var(--line);
-      padding: 20px 22px;
+      background: var(--bg-subtle);
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow-brutal);
+      padding: 18px 20px;
     }
   }
   .toc-title {
-    font-family: 'Space Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--burgundy);
-    margin-bottom: 14px;
+    color: var(--ink);
+    margin-bottom: 12px;
     font-weight: 700;
   }
   .toc ol {
@@ -314,15 +315,16 @@ const schema = {
   }
   .toc li {
     counter-increment: toc;
-    margin-bottom: 11px;
+    margin-bottom: 10px;
     font-size: 13.5px;
     line-height: 1.4;
   }
   .toc li::before {
-    content: counter(toc, decimal) '. ';
-    font-family: 'Space Mono', monospace;
+    content: counter(toc, decimal-leading-zero) ' ';
+    font-family: var(--font-mono);
     font-size: 10px;
-    color: var(--gold);
+    font-weight: 700;
+    color: var(--ink-muted);
   }
   .toc a {
     text-decoration: none;
@@ -331,8 +333,8 @@ const schema = {
   }
   .toc a:hover,
   .toc a:focus-visible {
-    color: var(--burgundy);
-    border-color: var(--burgundy);
+    color: var(--ink);
+    border-color: var(--border);
     outline: none;
   }
 
@@ -342,16 +344,16 @@ const schema = {
   }
 
   .policy-card {
-    background: var(--paper-light);
-    border: 2px solid var(--ink);
-    box-shadow: 6px 6px 0 var(--line);
-    padding: 36px 40px;
-    margin-bottom: 48px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow-brutal-lg);
+    padding: 32px 32px;
+    margin-bottom: 40px;
     position: relative;
   }
   @media (max-width: 600px) {
     .policy-card {
-      padding: 24px 20px;
+      padding: 22px 18px;
     }
   }
 
@@ -359,89 +361,91 @@ const schema = {
     position: absolute;
     top: -12px;
     right: 20px;
-    background: var(--burgundy);
-    color: var(--gold-light);
-    font-family: 'Space Mono', monospace;
+    background: var(--surface-dark);
+    color: var(--text-inverse);
+    font-family: var(--font-mono);
     font-size: 10px;
+    font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     padding: 4px 10px;
-    border: 1px solid var(--ink);
+    border: 1px solid var(--border);
   }
 
   .policy-section {
-    margin-bottom: 44px;
-    padding-bottom: 40px;
-    border-bottom: 1px dashed var(--line);
+    margin-bottom: 40px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border-subtle);
   }
   .policy-section:last-of-type {
     border-bottom: none;
   }
 
   .policy-body h2 {
-    font-size: clamp(24px, 3.2vw, 32px);
-    color: var(--burgundy);
-    margin-bottom: 16px;
-    line-height: 1.15;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--ink);
+    margin-bottom: 14px;
+    line-height: 0.95;
   }
 
   .policy-body h3 {
-    font-size: 19px;
+    font-size: 22px;
     color: var(--ink);
-    margin-top: 28px;
-    margin-bottom: 10px;
+    margin-top: 24px;
+    margin-bottom: 8px;
   }
 
   .policy-body p {
-    font-size: 16.5px;
-    line-height: 1.75;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink-soft);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .policy-body a {
-    color: var(--burgundy);
+    color: var(--ink);
     text-decoration: underline;
     text-underline-offset: 3px;
+    font-weight: 600;
   }
   .policy-body a:hover {
-    color: var(--ink);
+    color: var(--ink-muted);
   }
 
   .bullet-list {
-    margin: 16px 0 24px 20px;
+    margin: 14px 0 20px 20px;
     list-style-type: square;
-    color: var(--burgundy);
+    color: var(--ink);
   }
   .bullet-list li {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 15.5px;
+    line-height: 1.6;
     color: var(--ink-soft);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding-left: 4px;
   }
 
   .info-box,
   .notice-box,
   .contact-card {
-    background: var(--paper-light);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--burgundy);
-    padding: 20px 24px;
-    margin: 20px 0;
-    box-shadow: 3px 3px 0 rgba(32, 21, 18, 0.06);
+    background: var(--bg-subtle);
+    border: 2px solid var(--border);
+    border-left: 4px solid var(--border);
+    padding: 18px 20px;
+    margin: 18px 0;
+    box-shadow: var(--shadow-brutal);
   }
 
   .notice-box {
-    border-left-color: var(--gold);
-    background: #faf6ea;
+    border-left-color: var(--ink);
+    background: var(--bg-subtle);
   }
 
   .info-box p,
   .notice-box p,
   .contact-card p {
-    margin-bottom: 8px;
-    font-size: 15px;
+    margin-bottom: 6px;
+    font-size: 14.5px;
   }
   .info-box p:last-child,
   .notice-box p:last-child,
@@ -450,46 +454,48 @@ const schema = {
   }
 
   .brand-line {
-    font-family: 'Space Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 12px;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--burgundy);
-    margin-bottom: 10px !important;
+    color: var(--ink);
+    margin-bottom: 8px !important;
   }
 
   /* ---- Table ---- */
   .service-table-wrap {
     overflow-x: auto;
-    margin: 24px 0;
-    border: 2px solid var(--ink);
-    box-shadow: 4px 4px 0 var(--line);
+    margin: 20px 0;
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow-brutal);
   }
   .service-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14.5px;
     text-align: left;
-    background: var(--paper-light);
+    background: var(--bg);
   }
   .service-table th {
-    background: var(--ink);
-    color: var(--paper-light);
-    font-family: 'Space Mono', monospace;
+    background: var(--surface-dark);
+    color: var(--text-inverse);
+    font-family: var(--font-mono);
     font-size: 11px;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 12px 16px;
   }
   .service-table td {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--line);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-subtle);
     color: var(--ink-soft);
   }
   .service-table tr:last-child td {
     border-bottom: none;
   }
   .service-table tr:nth-child(even) td {
-    background: rgba(32, 21, 18, 0.02);
+    background: var(--bg-subtle);
   }
 </style>
